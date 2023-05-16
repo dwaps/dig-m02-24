@@ -2,7 +2,36 @@
 
 // const EventEmitter = require('events');
 
-class EventEmitter {}
+
+class EventEmitter {
+
+  constructor() {
+    this.events = {};
+  }
+  
+  on(eventName, listener) {
+    this.events[eventName] = this.events[eventName] || [];
+    this.events[eventName].push(listener);
+  }
+
+  once(eventName, listener) {
+    listener.once = true;
+    this.on(eventName, listener);
+  }
+
+  emit(eventName, ...args) {
+    const eventListeners = this.events[eventName];
+    
+    if (eventListeners) {
+      eventListeners.forEach(listener => listener(...args));
+      eventListeners.forEach((listener, index) => {
+        if (listener.once) {
+          eventListeners.splice(index, 1);
+        }
+      });
+    }
+  }
+}
 
 const emitter = new EventEmitter();
 
