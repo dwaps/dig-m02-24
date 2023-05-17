@@ -1,46 +1,42 @@
-// MODULE EVENTS
-
-// const EventEmitter = require('events');
-
-
-class EventEmitter {
-
-  constructor() {
-    this.events = {};
-  }
-  
-  on(eventName, listener) {
-    this.events[eventName] = this.events[eventName] || [];
-    this.events[eventName].push(listener);
-  }
-
-  once(eventName, listener) {
-    listener.once = true;
-    this.on(eventName, listener);
-  }
-
-  emit(eventName, ...args) {
-    const eventListeners = this.events[eventName];
-    
-    if (eventListeners) {
-      eventListeners.forEach(listener => listener(...args));
-      eventListeners.forEach((listener, index) => {
-        if (listener.once) {
-          eventListeners.splice(index, 1);
-        }
-      });
-    }
-  }
-}
-
+const EventEmitter = require('events');
 const emitter = new EventEmitter();
 
-const FILE_OPENED = 'FILE_OPENED';
 let count = 0;
+const config = {
+  SIZE: 8,
+  SPEED: 50,
+  DURATION: 5000
+};
 
-emitter.once(FILE_OPENED, () => console.log("Fichier ouvert ", ++count, " fois"));
-emitter.on(FILE_OPENED, (data, nb) => console.log("Fichier ouvert ", ++count, " fois", data, nb));
+const { readFileSync } = require('fs');
+const configTxt = readFileSync('config.txt');
+configTxt
+  .toString()
+  .split('\n')
+  .forEach(data => {
+    config[data.split('=')[0]] = +data.split('=')[1];
+  });
 
-emitter.emit(FILE_OPENED, 'dfghjklkjh', 789876);
-emitter.emit(FILE_OPENED, 'dfghjklkjh', 789876);
-emitter.emit(FILE_OPENED, 'dfghjklkjh', 789876);
+const logDot = (clearLine) => {
+  process.stdout.write('.');
+  if (clearLine) {
+    count = 0;
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+  }
+};
+const stop = () => {
+  console.log();
+  emitter.removeAllListeners();
+  process.exit(0);
+};
+
+emitter.on('dot', logDot);
+emitter.on('stop', stop);
+
+setInterval(
+  () => emitter.emit('dot', ++count == config.SIZE),
+  config.SPEED
+);
+
+setTimeout(stop, config.DURATION);
