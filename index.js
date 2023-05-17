@@ -1,20 +1,18 @@
-const EventEmitter = require('events');
-const emitter = new EventEmitter();
-const { SIZE, SPEED, DURATION } = require('./variables');
-let { count } = require('./variables');
-const { DOT_EVENT, STOP_EVENT } = require('./events');
-const { logDot, stop } = require('./functions');
+// MODULE PROCESS
 
-emitter.on(DOT_EVENT, logDot);
-emitter.on(STOP_EVENT, stop);
+const MAX = process.argv[2];
+const SPEED = 100;
+const space = process.env.NODE_ENV == 'development'
+  ? '🤪'
+  : ' ';
+let count = 0;
 
-setInterval(
-  () => {
-    const clearLine = ++count == SIZE;
-    emitter.emit(DOT_EVENT, clearLine);
-    if (clearLine) count = 0;
-  },
+const idInterval = setInterval(
+  () => process.stdout.write(space + ++count),
   SPEED
 );
 
-setTimeout(() => stop(emitter), DURATION);
+setTimeout(() => {
+  clearInterval(idInterval);
+  console.log();
+}, SPEED*MAX + SPEED);

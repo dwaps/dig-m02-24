@@ -1,2 +1,0 @@
-exports.DOT_EVENT = 'DOT_EVENT';
-exports.STOP_EVENT = 'STOP_EVENT';
