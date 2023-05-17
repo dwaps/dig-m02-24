@@ -1,14 +1,14 @@
 // MODULE HTTP/S
 
-const url = 'https://raw.githubusercontent.com/torvalds/linux/master/MAINTAINERS';
+const http = require('http');
+const server = http.createServer();
+const port = process.env.PORT || 8080;
 
-const { request } = require('https');
+server.listen(port);
+server.on('listening', () => console.log(`Listening on port ${port}`));
 
-const myRequest = request(new URL(url));
-
-myRequest.setHeader('Accept', 'application/json; charset=utf-8');
-myRequest.end();
-
-myRequest.on('response', res => {
-  console.log(res.headers['content-length'])
+server.on('request', (req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.write('<h1>Bienvenue</h1>');
+  res.end();
 })
