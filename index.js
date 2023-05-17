@@ -2,20 +2,7 @@ const EventEmitter = require('events');
 const emitter = new EventEmitter();
 
 let count = 0;
-const config = {
-  SIZE: 8,
-  SPEED: 50,
-  DURATION: 5000
-};
-
-const { readFileSync } = require('fs');
-const configTxt = readFileSync('config.txt');
-configTxt
-  .toString()
-  .split('\n')
-  .forEach(data => {
-    config[data.split('=')[0]] = +data.split('=')[1];
-  });
+const { SIZE = 8, SPEED = 50, DURATION = 5000 } = require('./config.json');
 
 const logDot = (clearLine) => {
   process.stdout.write('.');
@@ -35,8 +22,8 @@ emitter.on('dot', logDot);
 emitter.on('stop', stop);
 
 setInterval(
-  () => emitter.emit('dot', ++count == config.SIZE),
-  config.SPEED
+  () => emitter.emit('dot', ++count == SIZE),
+  SPEED
 );
 
-setTimeout(stop, config.DURATION);
+setTimeout(stop, DURATION);
