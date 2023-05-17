@@ -2,44 +2,31 @@
 
 const http = require('http');
 const port = process.env.PORT || 8080;
+const { readFileSync } = require('fs');
+const { extname } = require('path');
 
 const pages = {
-  '/home': '<h1>Bienvenue</h1>',
-  '/presentation': '<h1>Qui sommes-nous ?</h1>',
-  '/contact': '<h1>Nous contacter</h1>',
+  '/home': readFileSync('index.html'),
+  '/presentation': readFileSync('presentation.html'),
+  '/contact': readFileSync('contact.html'),
+  '/style.css': readFileSync('style.css'),
+  '/app.js': readFileSync('app.js'),
 };
-
-const tabs = [
-  { label: 'Accueil', link: '/home', className: 'active' },
-  { label: 'Présentation', link: '/presentation', className: '' },
-  { label: 'Contact', link: '/contact', className: '' },
-];
-
-const menuHTML = `
-  <nav>
-    ${tabs.map(({ label, link, className }) => `
-      <div>
-        <a href="${link}" class="${className}">${label}</a>
-      </div>
-    `).join('')}
-  </nav>
-`;
-
-const buildHTML = (contentPage) => `
-  ${menuHTML}
-  ${contentPage}
-  ${contentPage.includes('Bienvenue') ? '' : '<p>Voluptatem doloremque repudiandae. Rerum pariatur consectetur voluptatem ducimus assumenda maxime officiis ut. Voluptas dolorem assumenda doloremque corporis. Repellat doloremque adipisci ut qui sed quisquam.</p>'}
-`;
 
 http
   .createServer((req, res) => {
-    if (!req.url.includes('favicon') && pages.hasOwnProperty(req.url)) {
-      res.setHeader('Content-Type', 'text/html; charset=utf-8');
-      return res.end(buildHTML(pages[req.url]));
+    let contentType = 'text/html; charset=utf-8';
+    
+    switch (extname(req.url)) {
+      case '.css': contentType = 'text/css'; break;
+      case '.js': contentType = 'text/javascript'; break;
+      case '.ico':
+      case '.png': contentType = 'image/*'; break;
     }
-    // res.setHeader('Location', `http://localhost:${port}/home`);
-    // res.statusCode = 301;
-    res.writeHead(301, { Location: `http://localhost:${port}/home` });
+    
+    if (pages[req.url]) res.write(pages[req.url]);
+    else res.writeHead(301, { Location: `http://localhost:${port}/home` });
+
     res.end();
   })
   .listen(port, () => console.log(`Listening on port ${port}`));
