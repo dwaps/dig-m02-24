@@ -1,13 +1,11 @@
-const { resolve } = require('path');
-
 exports.homeCtrl = (req, res) => {
-  res.sendFile(resolve('views', 'home.html'));
+  res.render('pages/home');
 }
 
 exports.presentationCtrl = (req, res) => {
-  res.sendFile(resolve('views', 'presentation.html'));
+  res.render('pages/presentation');
 }
 
 exports.contactCtrl = (req, res) => {
-  res.sendFile(resolve('views', 'contact.html'));
+  res.render('pages/contact');
 }
