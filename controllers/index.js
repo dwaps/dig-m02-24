@@ -1,5 +1,7 @@
 exports.homeCtrl = (req, res) => {
-  res.render('pages/home');
+  res.render('pages/home', {
+    name: 'Coco'
+  });
 }
 
 exports.presentationCtrl = (req, res) => {
