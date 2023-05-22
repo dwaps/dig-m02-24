@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { homeCtrl, presentationCtrl, contactCtrl } = require('../controllers');
+const appRoutes = require('./app.routes');
+const apiTodosRoutes = require('./api-todos.routes');
 
-router.get('/home', homeCtrl);
-router.get('/presentation', presentationCtrl);
-router.get('/contact', contactCtrl);
+router.use('/', appRoutes);
+router.use('/api', apiTodosRoutes);
 
 router.get('*', (req, res) => res.redirect('/home'));
 

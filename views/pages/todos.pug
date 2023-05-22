@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+  h1 Liste des tâches
+
+  ul.todos
+    each todo in todos
+      li(class=todo.done?'done':'')= todo.txt
