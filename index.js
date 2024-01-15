@@ -1,12 +1,5 @@
-const friend = {
-  name: "coco",
-  age: 56,
-};
+const friends = ["coco", "jaco", "pedro"];
 
-const updated = {
-  ...friend,
-  age: 78,
-  email: "coco@mail.fr",
-};
+const [, ...bestFriends] = friends;
 
-console.log(updated);
+console.log(...friends);
