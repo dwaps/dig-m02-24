@@ -1,5 +1,5 @@
 const friends = ["coco", "jaco", "pedro"];
 
-const result = friends.map((value) => `<div>${value}</div>`).join("");
+const result = friends.find((value) => value != "jaco");
 
 console.log(result);
