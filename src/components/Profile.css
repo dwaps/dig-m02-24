@@ -1,0 +1,7 @@
+.profile-item {
+  background-color: rgba(50, 150, 220, 0.7);
+  width: 30em;
+  height: 20em;
+  padding: 1em;
+  border-radius: 1em 5em;
+}
