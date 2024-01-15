@@ -1,0 +1,7 @@
+.Photo {
+    width: 100%;
+}
+
+.PhotoImage {
+    max-width: -webkit-fill-available;
+}
