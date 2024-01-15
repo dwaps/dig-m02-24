@@ -1,5 +1,5 @@
 const friends = ["coco", "jaco", "pedro"];
 
-const [, ...bestFriends] = friends;
+const result = friends.map((value) => `<div>${value}</div>`).join("");
 
-console.log(...friends);
+console.log(result);
