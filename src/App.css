@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Josefin+Sans:wght@300;400&family=Overpass&family=Poppins:wght@300&family=Raleway:wght@500&display=swap");
+
 .App {
   text-align: center;
+  font-family: "Raleway", sans-serif;
 }
 
 .content-profiles {
