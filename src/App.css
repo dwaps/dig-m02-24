@@ -40,12 +40,11 @@
   color: #888;
 }
 
-
 .app {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   user-select: none;
 }
 

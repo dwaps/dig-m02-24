@@ -1,9 +1,9 @@
 import './Name.css';
 
 const Name = ({ name }) => (
-  <h1 className="Name">
+  <h4 className="Name">
     Name Component : { name }
-  </h1>
+  </h4>
 );
 
 export default Name;
