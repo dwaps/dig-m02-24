@@ -1,5 +1,3 @@
-const sayHello = () => {
+export default () => {
   console.log("yeah");
 };
-
-export { sayHello as default };
