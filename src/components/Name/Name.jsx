@@ -1,7 +1,7 @@
 function Name({ name }) {
     return (
       <div className="card-title">
-        <h2>Name : {name}</h2>
+        <h4>Name : {name}</h4>
       </div>
     );
   }
