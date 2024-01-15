@@ -1,7 +1,19 @@
 .profile-item {
-  background-color: rgba(50, 150, 220, 0.7);
+  background-color: rgba(50, 150, 220, 0.5);
   width: 30em;
   height: 20em;
   padding: 1em;
   border-radius: 1em 5em;
+
+  transition: background-color 0.25s, color 0.25s, transform 0.3s;
+}
+
+.profile-item:hover {
+  cursor: pointer;
+  background-color: rgba(50, 150, 220, 0.9);
+  color: beige;
+}
+
+.profile-item:active {
+  transform: scale(0.95);
 }
