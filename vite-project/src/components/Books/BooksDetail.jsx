@@ -4,11 +4,11 @@ import BooksRanking from "./BooksRanking";
 
 function BooksDetail({ book }) {
   return (
-    <li key={book.id}>
+    <div key={book.id} style={{ margin: "70px" }}>
       <BooksImage book={book}></BooksImage>
       <BooksAuthor book={book}></BooksAuthor>
       <BooksRanking book={book}></BooksRanking>
-    </li>
+    </div>
   );
 }
 

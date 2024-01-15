@@ -8,9 +8,10 @@ function Books() {
   ));
 
   return (
-    <div className="books-container-box">
-      <ul>{arrayDataItems}</ul>
-    </div>
+    <>
+      <h2>Bibliothèque :</h2>
+      <div className="books-container-box">{arrayDataItems}</div>
+    </>
   );
 }
 
