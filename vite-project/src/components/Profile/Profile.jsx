@@ -3,7 +3,7 @@ import Name from "./Name/Name";
 import Bio from "./Bio/Bio";
 import { user } from "../../models";
 
-export default function Profile() {
+function Profile() {
   return (
     <>
       <Photo user={user}></Photo>
@@ -12,3 +12,5 @@ export default function Profile() {
     </>
   );
 }
+
+export default Profile;
