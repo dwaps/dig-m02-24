@@ -2,4 +2,4 @@ const sayHello = () => {
   console.log("yeah");
 };
 
-export { sayHello };
+export { sayHello as default };

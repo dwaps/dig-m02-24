@@ -1,3 +1,3 @@
-import { sayHello } from "./hello.js";
+import React from "./hello.js";
 
-sayHello();
+React();
