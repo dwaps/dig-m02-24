@@ -1,9 +1,12 @@
-const age = 45;
+const friend = {
+  name: "coco",
+  age: 56,
+};
 
-if (age >= 18) {
-  import("./hello.js").then((m) => {
-    m.default();
-  });
-} else {
-  console.log("PAS YEAH");
-}
+const updated = {
+  ...friend,
+  age: 78,
+  email: "coco@mail.fr",
+};
+
+console.log(updated);
