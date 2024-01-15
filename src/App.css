@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.content {
+.content-profiles {
   display: flex;
   justify-content: center;
 }
@@ -13,4 +13,23 @@
   justify-content: center;
   gap: 5em;
   width: 80%;
+}
+
+.content-books {
+  display: flex;
+  justify-content: center;
+}
+
+.books-tab table {
+  border: 2px solid rgb(139, 139, 139);
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+}
+
+.books-tab table tbody tr:nth-child(odd) {
+  background-color: #93d0ee;
+}
+
+.books-tab table tbody tr:nth-child(even) {
+  background-color: #e2f0f7;
 }

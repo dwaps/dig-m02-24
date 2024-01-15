@@ -1,0 +1,9 @@
+.description-book {
+  text-align: left;
+  padding: 0.5em;
+}
+
+.actions-book {
+  display: flex;
+  gap: 1em;
+}
