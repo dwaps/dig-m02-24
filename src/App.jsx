@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+
+const smileys = [
+  {
+    id: "bbd6678b-efec-4804-b4af-c6dc2c5667dd",
+    label: "Soleil",
+    image: "☀️",
+  },
+  {
+    id: "99a8c826-f061-4a9d-96fd-37a23ddcde90",
+    label: "Lune",
+    image: "🌛",
+  },
+  {
+    id: "73f5b9a7-767d-412e-bd1c-25109a6a1fb5",
+    label: "Nuage",
+    image: "☁️",
+  },
+  {
+    id: "ba0be2a6-b952-4d4c-a9d0-ae1be99dc630",
+    label: "Eclair",
+    image: "⚡",
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <h2>Quelle est ton humeur du jour ?</h2>
+      <div className="smileys-box">
+        {smileys.map((smiley) => (
+          <div key={smiley.id}>{smiley.image}</div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
