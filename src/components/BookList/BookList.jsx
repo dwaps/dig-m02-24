@@ -5,7 +5,7 @@ import Book from './../Book/Book'
 
 
 const BookList = () => (
-  <div className="BookList">
+  <div className="book-list">
     {bookList.map(book => <Book key={book.id} book={book}/>)}
   </div>
 );

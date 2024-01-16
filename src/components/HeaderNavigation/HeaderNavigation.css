@@ -1,1 +1,17 @@
-.HeaderNavigation {}
+.HeaderNavigation {
+
+}
+
+ul.navigation {
+    position: fixed;
+    padding: 12px 24px;;
+    right: 10%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    list-style: none;
+    background-color: rgba(225, 225, 225, 0.8);
+    border-radius: 12px;
+    border: 1px solid #444;
+}

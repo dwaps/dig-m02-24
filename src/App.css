@@ -55,3 +55,15 @@
   align-items: center;
   gap: 48px;
 }
+
+
+.create-book div {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px;
+}
+
+.create-book div input {
+  margin-left: 12px;
+}
+

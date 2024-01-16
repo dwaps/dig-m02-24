@@ -7,21 +7,20 @@ import { BookListContext } from './../App'
 import NotFound from "./NotFound";
 
 function BookPage() {
-  const id = Number(useParams().id)
-  const bookList = useContext(BookListContext)
+	const id = Number(useParams().id)
+	const bookList = useContext(BookListContext)
 
-  let book = bookList.find(book => book.id === id)
+	let book = bookList.find(book => book.id === id)
 
-  if(!book){ 
-    return (
-      <NotFound />
-    )
-  } else {
-    return ( 
-      <Book book={book} />
-    )
-  }
+	if (!book) {
+		return (
+			<NotFound />
+		)
+	} else {
+		return (
+			<Book book={book} />
+		)
+	}
 }
-  
+
 export default BookPage;
-  

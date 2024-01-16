@@ -1,7 +1,24 @@
-.BookList {
+.book-list-page {
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+    gap: 24px;
+    padding: 24px 12px;
+}
+
+.book-list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
     padding: 24px 12px;
+}
+
+.book-list-manager {
+    display: flex;
+    justify-content: space-around;
+}
+
+.book-list-manager div > * {
+    margin: 0 12px;
 }

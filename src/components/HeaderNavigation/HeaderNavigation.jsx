@@ -11,9 +11,10 @@ import BookListPage from "../../pages/BookListPage";
 import BookPage from "../../pages/BookPage";
 import NotFound from "../../pages/NotFound";
 import Contact from "../../pages/Contact";
+import CreateBookPage from "../../pages/CreateBookPage";
 
 const HeaderNav = () => (
-  <ul>
+  <ul className="navigation">
     <li>
       <Link to="/">Homepage</Link>
     </li>
@@ -28,7 +29,8 @@ const HeaderNav = () => (
 
 
 function HeaderNavigation () {
-  return <div className="HeaderNavigation">
+  return (
+  <div className="HeaderNavigation">
     <Router>
       <HeaderNav />
       <Routes>
@@ -36,11 +38,12 @@ function HeaderNavigation () {
         <Route path="/booklistpage" element={<BookListPage />} />
         <Route path="/bookpage/:id" element={<BookPage />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/create-book" element={<CreateBookPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router> 
   </div>
-};
+)};
 
 
 export default HeaderNavigation;
