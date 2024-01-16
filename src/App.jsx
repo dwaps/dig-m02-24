@@ -5,6 +5,7 @@ import Smiley from "./components/Smiley/Smiley";
 import BooksPage from "./components/Livre/BooksPage";
 import { users } from "./models/Profile/index";
 import { smileys } from "./models/Smiley/index";
+import { LivresProvider } from "./components/Livre/LivresContext";
 
 function App() {
   const [selectedSmiley, setSelectedSmiley] = useState(null);
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <Router>
+      <LivresProvider>
       <div className="container text-center text-white">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
@@ -83,6 +85,7 @@ function App() {
           <Route path="/livres" element={<BooksPage />} />
         </Routes>
       </div>
+      </LivresProvider>
     </Router>
   );
 }

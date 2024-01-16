@@ -1,8 +1,10 @@
 // BooksPage.jsx
-import { livres } from "../../models/Livre";
+import { useLivres } from "./LivresContext";
 
 function BooksPage() {
-  return (
+  const {livres} = useLivres();
+  
+    return (
     <div>
       <h2 className="p-4">Liste de Livres</h2>
       <table className="table table-hover table-dark">
