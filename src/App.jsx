@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import Smiley from "./components/Smiley/Smiley";
 import BooksPage from "./components/Livre/BooksPage";
+import BookDetailsPage from "./components/Livre/BookDetailsPage.jsx";
 import { users } from "./models/Profile/index";
 import { smileys } from "./models/Smiley/index";
 import { LivresProvider } from "./components/Livre/LivresContext";
@@ -83,6 +84,7 @@ function App() {
             }
           />
           <Route path="/livres" element={<BooksPage />} />
+          <Route path="/livres/:bookId" element={<BookDetailsPage />} />
         </Routes>
       </div>
       </LivresProvider>
