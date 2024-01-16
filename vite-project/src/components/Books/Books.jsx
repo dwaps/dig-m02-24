@@ -3,6 +3,8 @@ import { BooksContext } from "../../models/utils/context";
 import "./Books.css";
 import BooksDetail from "./BooksDetail";
 import BooksTable from "./Table/BooksTable";
+import { Route, Routes } from "react-router-dom";
+import BookDetailsPage from "./Table/BooksDetailPage";
 
 function Books() {
   const dataBooks = useContext(BooksContext);
@@ -12,10 +14,19 @@ function Books() {
 
   return (
     <>
-      <h2>Bibliothèque :</h2>
-      <div className="books-container-box">{allBooks}</div>
+      {/* <h2>Bibliothèque :</h2>
+      <div className="books-container-box">{allBooks}</div> */}
       <h2>Sous forme de tableau :</h2>
-      <BooksTable allBooks={dataBooks.books}></BooksTable>
+      <Routes>
+        <Route
+          path="/livres/:id"
+          element={<BookDetailsPage allBooks={allBooks} />}
+        />
+
+        <Route path="/" exact>
+          <BooksTable allBooks={dataBooks.books}></BooksTable>
+        </Route>
+      </Routes>
     </>
   );
 }
