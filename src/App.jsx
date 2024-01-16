@@ -3,12 +3,12 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import "./index.module.scss";
 import Header from "./components/Header";
-import BookPage from "./pages/Book/Book";
-import BooksPage from "./pages/Book/Books";
-import ContactPage from "./pages/Contact";
-import EditBookPage from "./pages/Book/EditBook";
-import HomePage from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import BookPage from "./pages/Book/BookPage";
+import BooksPage from "./pages/Book/BooksPage";
+import ContactPage from "./pages/ContactPage";
+import EditBookPage from "./pages/Book/EditBookPage";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFoundPage";
 
 export default function App() {
     return (

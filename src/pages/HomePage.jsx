@@ -1,8 +1,8 @@
-export default function Page() {
+export default function HomePage() {
     return (
         <>
             <h1>
-                Contact
+                Home
             </h1>
 
             To do
