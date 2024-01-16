@@ -1,0 +1,5 @@
+.smileyBox {
+  display: grid;
+  grid-template-columns: repeat(2, 64px);
+  grid-gap: 16px;
+}

@@ -1,0 +1,23 @@
+.smiley {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  opacity: .7;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: opacity .3s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:active {
+    scale: .7;
+  }
+
+  &__selected {
+    border-radius: 64px;
+    box-shadow: 0 8px 16px #0002;
+  }
+}
