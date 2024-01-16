@@ -1,0 +1,59 @@
+.bookItem {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+      margin: 0;
+      font-size: 1.2rem;
+
+      &__id {
+        margin-left: 4px;
+        color: #aaa;
+        font-size: .8rem;
+        font-weight: normal;
+      }
+    }
+
+    &__links {
+      display: flex;
+      column-gap: 8px;
+    }
+  }
+
+  &__author {
+    margin: 0;
+    font-size: .9rem;
+
+    &__name {
+      margin-left: 2px;
+    }
+  }
+
+  &__summary {
+    margin: 16px 0 0 0;
+    font-size: 1rem;
+  }
+}
+
+.link {
+  &__delete {
+    color: #de1818;
+    cursor: pointer;
+    font-weight: 500;
+
+    &:hover {
+      color: #de1818cc;
+    }
+  }
+}

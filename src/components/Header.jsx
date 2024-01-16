@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom";
 
 import styles from "./Header.module.scss";
-import {tag} from "../utils/tag.js";
+import {tag} from "../utils/tag";
 
 export default function Header() {
     return (
