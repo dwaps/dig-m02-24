@@ -2,12 +2,16 @@ import "./Book.css";
 import Photo from "./Photo";
 import Description from "./Description";
 import Price from "./Price";
+import Auteur from "./Auteur";
 
 function Book(props) {
   return (
     <tr>
       <td className="book-photo">
         <Photo key={props.book.id} photo={props.book.photo} />
+      </td>
+      <td className="book-auteur">
+        <Auteur key={props.book.id} auteur={props.book.auteur} />
       </td>
       <td className="book-description">
         <Description
@@ -18,6 +22,10 @@ function Book(props) {
       </td>
       <td className="book-price">
         <Price key={props.book.id} price={props.book.price} />
+      </td>
+      <td className="book-actions">
+        <button>Update</button>
+        <button>Supprimer</button>
       </td>
     </tr>
   );

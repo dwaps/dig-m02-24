@@ -20,7 +20,9 @@
 
 .content-books {
   display: flex;
-  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .books-tab table {

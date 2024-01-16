@@ -5,24 +5,6 @@ export const profiles = [
     bio: "Érudit culinaire, spécialiste du kebab, amateur de raclette et expert en siestologie. En quête de l'alliance ultime entre saveurs et siestes réparatrices ! 🌮🥙🧀💤",
     name: "Arno Camoa",
   },
-  {
-    id: "002",
-    photo: "https://randomuser.me/api/portraits/women/26.jpg",
-    bio: "Érudit culinaire, spécialiste du kebab, amateur de raclette et expert en siestologie. En quête de l'alliance ultime entre saveurs et siestes réparatrices ! 🌮🥙🧀💤",
-    name: "Ava S'coucher",
-  },
-  {
-    id: "003",
-    photo: "https://randomuser.me/api/portraits/men/27.jpg",
-    bio: "Érudit culinaire, spécialiste du kebab, amateur de raclette et expert en siestologie. En quête de l'alliance ultime entre saveurs et siestes réparatrices ! 🌮🥙🧀💤",
-    name: "Spaghetti Joe",
-  },
-  {
-    id: "004",
-    photo: "https://randomuser.me/api/portraits/men/28.jpg",
-    bio: "Érudit culinaire, spécialiste du kebab, amateur de raclette et expert en siestologie. En quête de l'alliance ultime entre saveurs et siestes réparatrices ! 🌮🥙🧀💤",
-    name: "Sula Cronim",
-  },
 ];
 
 export const books = [
@@ -33,6 +15,7 @@ export const books = [
     name: "Le chat démoniaque",
     description:
       "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches ! 🐾🕵️‍♂️",
+    auteur: "Isabella Montclair",
     price: 45,
   },
   {
@@ -42,6 +25,7 @@ export const books = [
     name: "Une histoire de chats",
     description:
       "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches ! 🐾🕵️‍♂️",
+    auteur: "Ezekiel Thornfield",
     price: 12.99,
   },
   {
@@ -51,6 +35,7 @@ export const books = [
     name: "Chat va et toi ?",
     description:
       "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches ! 🐾🕵️‍♂️",
+    auteur: "Serena Nightshade",
     price: 32.49,
   },
   {
@@ -60,6 +45,7 @@ export const books = [
     name: "Jamais deux sans chat",
     description:
       "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches ! 🐾🕵️‍♂️",
+    auteur: "Lucius Stormrider",
     price: 7.85,
   },
 ];

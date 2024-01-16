@@ -3,7 +3,13 @@ import Bio from "./Bio";
 import Name from "./Name";
 import Photo from "./Photo";
 
+import { useContext } from "react";
+import { SmileyImageContext } from "../../utils/context";
+
 function Profile(props) {
+  const { smileyImage, getSmileyImage } = useContext(SmileyImageContext);
+  getSmileyImage("bbd6678b-efec-4804-b4af-c6dc2c5667dd");
+  console.log(smileyImage);
   return (
     <div className="profile-item">
       <div className="profile-photo">
