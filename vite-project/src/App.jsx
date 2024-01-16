@@ -3,8 +3,8 @@ import Smiley from "./components/Smiley";
 import Profile from "./components/Profile/Profile";
 import { smileys } from "./models";
 import { useState } from "react";
-// import Books from "./components/Books/Books";
-// import Profile from "./components/Profile/Profile";
+import Books from "./components/Books/Books";
+import { BooksProvider } from "./models/utils/context";
 
 function App() {
   const [humor, setHumor] = useState("");
@@ -21,6 +21,9 @@ function App() {
           />
         ))}
       </div>
+      <BooksProvider>
+        <Books></Books>
+      </BooksProvider>
     </div>
   );
 }
