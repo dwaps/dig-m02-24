@@ -1,3 +1,8 @@
+.smileys-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .smileys-box > div {
   padding: 30px;
   font-size: 2rem;

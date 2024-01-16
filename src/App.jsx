@@ -1,13 +1,16 @@
-import { useState } from "react";
 import "./App.css";
+import Smiley from "./components/Smiley";
+import { smileys } from "./models";
 
 function App() {
-  const [userInput, setUserInput] = useState("");
-
   return (
     <div className="app">
-      <input type="text" onChange={(e) => setUserInput(e.target.value)} />
-      {userInput}
+      <h2>Quelle est ton humeur du jour ?</h2>
+      <div className="smileys-box">
+        {smileys.map((smiley) => (
+          <Smiley key={smiley.id} smiley={smiley} />
+        ))}
+      </div>
     </div>
   );
 }
