@@ -1,39 +1,46 @@
-import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+  useParams,
+} from "react-router-dom";
 import "./App.css";
-import Smiley from "./components/Smiley";
-import Profile from "./components/Profile";
-import { smileys as sm } from "./models";
+
+const HeaderNav = () => (
+  <ul>
+    <li>
+      <Link to="/one">One</Link>
+    </li>
+    <li>
+      <Link to={"/two/678"}>Two</Link>
+    </li>
+    <li>
+      <Link to="/three">Three</Link>
+    </li>
+  </ul>
+);
+
+const One = () => <h1>Page One</h1>;
+const Two = () => {
+  const { id } = useParams();
+  return <h1>Page Two: id réçu ➡️ {id}</h1>;
+};
+const Three = () => <h1>Page Three</h1>;
 
 function App() {
-  const [smileys, setSmileys] = useState(sm);
-  const [seletedSmiley, setSeletedSmiley] = useState(null);
-
-  function onSelectSmiley(id) {
-    const selected = smileys
-      .map((sm) => {
-        sm.selected = false;
-        return sm;
-      })
-      .find((sm) => sm.id === id);
-
-    selected.selected = true;
-    setSeletedSmiley(selected);
-    setSmileys([...smileys]);
-  }
-
   return (
     <div className="app">
-      <Profile mood={seletedSmiley?.image} />
-      <h2>Quelle est ton humeur du jour ?</h2>
-      <div className="smileys-box">
-        {smileys.map((smiley) => (
-          <Smiley
-            key={smiley.id}
-            smiley={smiley}
-            selectSmiley={onSelectSmiley}
-          />
-        ))}
-      </div>
+      <Router>
+        <HeaderNav />
+        <Routes>
+          <Route path="/one" element={<One />} />
+          <Route path="/two/:id" element={<Two />} />
+          <Route path="/three" element={<Three />} />
+          <Route path="*" element={<Navigate to="/one" />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
