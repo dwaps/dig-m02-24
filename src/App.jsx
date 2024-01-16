@@ -9,7 +9,7 @@ import { smileyz } from './models'
 
 
 function App() {
-  const [smiley, setHumor] = useState('No humor')
+  const [smiley, setHumor] = useState("Pas d'humeur")
 
 
   return <div className="app">
@@ -26,7 +26,12 @@ function App() {
         <h2>Quelle est ton humeur du jour ?</h2>
         <div className="smileys-box">
           {smileyz.map((smiley) => (
-            <Smiley key={smiley.id} smiley={smiley} onClick={() => {setHumor(smiley.image)}} />
+            <Smiley 
+              key={smiley.id} 
+              smiley={smiley} 
+              onClick={() => {
+                setHumor(smiley.image)
+              }} />
           ))}
         </div>
       </div>
