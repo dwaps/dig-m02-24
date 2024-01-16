@@ -54,7 +54,7 @@ function App() {
             element={<Accueil setHumor={setHumor}></Accueil>}
           ></Route>
           <Route
-            path="/livres"
+            path="/livres/*"
             element={
               <BooksProvider>
                 <Books></Books>

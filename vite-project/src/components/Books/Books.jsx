@@ -18,11 +18,10 @@ function Books() {
     <>
       {/* <h2>Bibliothèque :</h2>
       <div className="books-container-box">{allBooks}</div> */}
-      <h2>Sous forme de tableau :</h2>
       <Routes>
         <Route path="/" element={<BooksTable allBooks={dataBooks.books} />} />
         <Route
-          path="/livres/:id"
+          path="/:id"
           element={<BookDetailsPage allBooks={dataBooks.books} />}
         />
       </Routes>

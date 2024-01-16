@@ -18,23 +18,26 @@ function BooksTable({ allBooks }) {
   };
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Illustration</th>
-          <th>Titre</th>
-          <th onClick={handleSortByAuthor} style={{ cursor: "pointer" }}>
-            Auteur {sortOrder === "asc" ? "↑" : "↓"}
-          </th>
-          <th>Note</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sortedBooks.map((book) => (
-          <BooksTableDetail key={book.id} book={book}></BooksTableDetail>
-        ))}
-      </tbody>
-    </table>
+    <>
+      <h2>Sous forme de tableau :</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Illustration</th>
+            <th>Titre</th>
+            <th onClick={handleSortByAuthor} style={{ cursor: "pointer" }}>
+              Auteur {sortOrder === "asc" ? "↑" : "↓"}
+            </th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedBooks.map((book) => (
+            <BooksTableDetail key={book.id} book={book}></BooksTableDetail>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
 
