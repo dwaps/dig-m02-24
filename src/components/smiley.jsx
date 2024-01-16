@@ -1,7 +1,7 @@
 import "./Smiley.css";
 
-function Smiley({ smiley }) {
-  return <div>{smiley.image}</div>
+function Smiley({ smiley, onClick }) {
+  return <div onClick={onClick}>{smiley.image}</div>
 }
 
 export default Smiley;
