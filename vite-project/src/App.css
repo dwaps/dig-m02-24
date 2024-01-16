@@ -6,7 +6,7 @@
   user-select: none;
 }
 
-.container-box {
+.smileys-box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
