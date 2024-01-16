@@ -1,46 +1,28 @@
+
 import './App.css'
-import React, { useState } from 'react';
-import Profile from './components/Profile/Profile'
-import { profile } from './models'
-import BookList from './components/BookList/BookList'
+import { useState, createContext, useContext } from 'react';
 
-import Smiley from './components/smiley'
-import { smileyz } from './models'
+import HeaderNavigation from './components/HeaderNavigation/HeaderNavigation';
+import { bookList } from './models/index'
 
+export const BookListContext = createContext() 
 
 function App() {
-  const [smiley, setHumor] = useState("Pas d'humeur")
+
+  const [books, setBook] = useState("")
 
 
-  return <div className="app">
 
-    <div className="profile-smiley-wrapper">
+  return ( 
+    <>
+    <div className="app">
+      <BookListContext.Provider value={bookList}>
 
-      <div>
-        <h2>Un profil:</h2>
-        <Profile profile={ profile } />
-        Je s'appelle: { smiley }
-      </div>
+        <HeaderNavigation />
 
-      <div>
-        <h2>Quelle est ton humeur du jour ?</h2>
-        <div className="smileys-box">
-          {smileyz.map((smiley) => (
-            <Smiley 
-              key={smiley.id} 
-              smiley={smiley} 
-              onClick={() => {
-                setHumor(smiley.image)
-              }} />
-          ))}
-        </div>
-      </div>
-
+      </BookListContext.Provider>
     </div>
-
-    <h2>Book list:</h2>
-    <BookList />
-  </div>;
-}
+    </>
+)}
 
 export default App

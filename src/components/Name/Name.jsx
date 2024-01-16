@@ -2,7 +2,7 @@ import './Name.css';
 
 const Name = ({ name }) => (
   <h4 className="Name">
-    Name Component : { name }
+    Name : { name }
   </h4>
 );
 
