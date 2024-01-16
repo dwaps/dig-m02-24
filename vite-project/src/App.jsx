@@ -65,7 +65,7 @@ function App() {
             path="/profile"
             element={<Profile humor={humor}></Profile>}
           ></Route>
-          <Route path="*" element={<Navigate to="/Accueil"></Navigate>}></Route>
+          <Route path="*" element={<Navigate to="/accueil"></Navigate>}></Route>
         </Routes>
       </Router>
     </div>
