@@ -9,10 +9,14 @@ function BookListPage() {
 
   const bookList = useContext(BookListContext)
 
-  return <div className="BookList">
-      BookListPage
+  
 
-      <h2>Book list:</h2>
+  // SEARCH COMPONENT
+  // ADD BOOK
+  // SORT ASC / DESC
+
+  return <div className="BookList">
+      <h1>Book list:</h1>
       <BookList bookList={bookList} />
     </div>
   };
