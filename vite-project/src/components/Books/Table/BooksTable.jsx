@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BooksTableDetail from "./BooksTableDetail";
 
-function BooksTable({ allBooks }) {
+function BooksTable({ allBooks, onDeleteBook }) {
   const [sortOrder, setSortOrder] = useState("asc");
   const [sortedBooks, setSortedBooks] = useState(allBooks);
 
@@ -17,6 +17,11 @@ function BooksTable({ allBooks }) {
     setSortOrder(newSortOrder);
   };
 
+  const handleDelete = (bookId) => {
+    const updatedBooks = sortedBooks.filter((book) => book.id !== bookId);
+    onDeleteBook(updatedBooks);
+  };
+
   return (
     <>
       <h2>Sous forme de tableau :</h2>
@@ -28,12 +33,17 @@ function BooksTable({ allBooks }) {
             <th onClick={handleSortByAuthor} style={{ cursor: "pointer" }}>
               Auteur {sortOrder === "asc" ? "↑" : "↓"}
             </th>
-            <th>Note</th>
+            <th>Actions</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {sortedBooks.map((book) => (
-            <BooksTableDetail key={book.id} book={book}></BooksTableDetail>
+            <BooksTableDetail
+              key={book.id}
+              book={book}
+              onDelete={() => handleDelete(book.id)}
+            ></BooksTableDetail>
           ))}
         </tbody>
       </table>
