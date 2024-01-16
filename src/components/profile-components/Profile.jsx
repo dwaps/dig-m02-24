@@ -15,6 +15,9 @@ function Profile(props) {
       <div className="profile-bio">
         <Bio key={props.profile.id} bio={props.profile.bio} />
       </div>
+      <div className="profile-mood">
+        <p>Son mood : {props.currentMood}</p>
+      </div>
     </div>
   );
 }

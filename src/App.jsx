@@ -1,17 +1,27 @@
 import "./App.css";
 import Profile from "./components/profile-components/Profile";
 import Book from "./components/book-components/Book";
+import Smileys from "./components/smiley-components/Smileys";
+import { useState } from "react";
 
 import { profiles, books } from "./models";
 
 function App() {
+  const [currentMood, setCurrentMood] = useState("Aucun");
   return (
     <div className="App">
       <h1>Liste des profils</h1>
       <div className="content-profiles">
         <div className="profiles-div">
           {profiles.map((profile) => (
-            <Profile key={profile.id} profile={profile} />
+            <div>
+              <Profile
+                key={profile.id}
+                profile={profile}
+                currentMood={currentMood}
+              />
+              <Smileys setCurrentMood={setCurrentMood} />
+            </div>
           ))}
         </div>
       </div>

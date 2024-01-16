@@ -1,0 +1,29 @@
+.selected {
+  opacity: 1;
+  transform: scale(1.7);
+}
+
+.smileys-box {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.smileys-box > div {
+  padding: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.smileys-box > .not-selected {
+  opacity: 0.7;
+}
+
+.smileys-box > .not-selected:hover {
+  opacity: 1;
+}
+
+.smileys-box > .not-selected:active {
+  transform: scale(0.7);
+}
