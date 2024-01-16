@@ -1,0 +1,22 @@
+.header {
+  $border: 1px solid #ddd;
+
+  padding: 12px;
+  top: 0;
+  position: sticky;
+  border-bottom: $border;
+  background-color: #fff;
+}
+
+.nav {
+  display: flex;
+  column-gap: 8px;
+
+  &__link {
+    $border: 2px solid #646cff;
+
+    &__active {
+      border-bottom: $border;
+    }
+  }
+}

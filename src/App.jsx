@@ -1,13 +1,14 @@
-import styles from "./App.module.css";
-import BookList from "./components/BookList";
-import SmileyBox from "./components/SmileyBox";
+import {StrictMode} from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-/**
- * @typedef {Object} Smiley
- * @property {String} id
- * @property {String} label
- * @property {String} image
- */
+import "./index.module.scss";
+
+import Header from "./components/Header";
+import BookPage from "./pages/Book";
+import BooksPage from "./pages/Books";
+import ContactPage from "./pages/Contact";
+import HomePage from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 /**
  * @typedef {Object} Book
@@ -25,32 +26,9 @@ import SmileyBox from "./components/SmileyBox";
  */
 
 /**
- * @type {Smiley[]}
- */
-const smileys = [
-    {
-        id: "bbd6678b-efec-4804-b4af-c6dc2c5667dd",
-        label: "Soleil",
-        image: "☀️",
-    }, {
-        id: "99a8c826-f061-4a9d-96fd-37a23ddcde90",
-        label: "Lune",
-        image: "🌛",
-    }, {
-        id: "73f5b9a7-767d-412e-bd1c-25109a6a1fb5",
-        label: "Nuage",
-        image: "☁️",
-    }, {
-        id: "ba0be2a6-b952-4d4c-a9d0-ae1be99dc630",
-        label: "Eclair",
-        image: "⚡",
-    },
-];
-
-/**
  * @type {User[]}
  */
-const authors = [
+export const authors = [
     {
         id: 1,
         firstName: "John",
@@ -65,33 +43,41 @@ const authors = [
 /**
  * @type {Book[]}
  */
-const books = [
+export const books = [
     {
         id: 1,
         author: authors[0],
         title: "Book A",
-        summary: "This is book A's description",
+        summary: "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
     }, {
         id: 2,
         author: authors[1],
         title: "Book B",
-        summary: "This is book B's description",
+        summary: "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
     }, {
         id: 3,
         author: authors[0],
         title: "Book C",
-        summary: "This is book C's description",
+        summary: "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
     },
 ];
 
 export default function App() {
     return (
-        <div className={styles.app}>
-            <h1>
-                What is your humor?
-            </h1>
+        <StrictMode>
+            <BrowserRouter>
+                <Header />
 
-            <SmileyBox smileys={smileys} />
-        </div>
+                <main>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/books" element={<BooksPage />} />
+                        <Route path="/books/:id" element={<BookPage />} />
+                        <Route path="/contact" element={<ContactPage />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </main>
+            </BrowserRouter>
+        </StrictMode>
     );
 }
