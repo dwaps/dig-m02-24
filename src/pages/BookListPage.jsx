@@ -31,7 +31,7 @@ function BookListPage() {
 						<input id="booktitle" name="booktitle" type="text" />
 					</div>
 
-					<Link to={'/create-book'}>
+					<Link to={'/bookform'}>
 						<button className="add-book">Ajouter un livre</button>
 					</Link>
 				</div>

@@ -11,7 +11,8 @@ import BookListPage from "../../pages/BookListPage";
 import BookPage from "../../pages/BookPage";
 import NotFound from "../../pages/NotFound";
 import Contact from "../../pages/Contact";
-import CreateBookPage from "../../pages/BookFormPage";
+import CreateBookPage from "../../pages/CreateBookPage";
+import UpadateBookPage from "../../pages/UpadateBookPage";
 
 const HeaderNav = () => (
   <ul className="navigation">
@@ -38,7 +39,8 @@ function HeaderNavigation () {
         <Route path="/booklistpage" element={<BookListPage />} />
         <Route path="/bookpage/:id" element={<BookPage />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/create-book" element={<CreateBookPage />} />
+        <Route path="/bookform" element={<CreateBookPage />} />
+        <Route path="/bookform/:id/update" element={<UpadateBookPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router> 

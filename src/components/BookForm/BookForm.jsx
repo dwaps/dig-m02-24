@@ -1,27 +1,31 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 import { useContext, useRef, useState } from "react";
 
-import { BookListContext } from '../models/utils/context/index';
+import { BookListContext } from '../../models/utils/context/index';
 
+function BookFormPage({ book }) {
 
-function BookFormPage() {
-	const id = Number(useParams().id)
-	// if(id !== )
+	const navigate = useNavigate()
+	
+	const { bookListState, createOrUpdate } = useContext(BookListContext)
+	
+	// const [book, setBook] = useState(bookListState[0]);
 
-	const { bookListState, addBook } = useContext(BookListContext)
+	let title = useRef(book.title)
+	let summary = useRef(book.summary)
+	let publisher = useRef(book.data.publisher)
+	let releaseDate = useRef(book.data.releaseDate)
+	let name = useRef(book.profile.name)
+	let bio = useRef(book.profile.bio)
+	
+	let bookCopy 
 
-	const [book, setBook] = useState(bookListState[0]);
-
-
-	const title = useRef(bookListState[0].title)
-	const summary = useRef(bookListState[0].summary)
-	const publisher = useRef(bookListState[0].data.publisher)
-	const releaseDate = useRef(bookListState[0].data.releaseDate)
-	const name = useRef(bookListState[0].profile.name)
-	const bio = useRef(bookListState[0].profile.bio)
 
 	function handleSubmit(event){
+
 		event.preventDefault()
+
+		
 		book.title = title.current.value
 		book.summary = summary.current.value
 		book.data.publisher = publisher.current.value
@@ -29,9 +33,7 @@ function BookFormPage() {
 		book.profile.name = name.current.value
 		book.profile.bio = bio.current.value
 
-		console.log(book)
-
-		// addBook(book)
+    createOrUpdate(book)
 	}
 
 	return (
@@ -66,7 +68,10 @@ function BookFormPage() {
 				<input defaultValue={bio.current} ref={bio} id="bio" name="bio" type="text" />
 			</div>
 
-			<button onClick={() => {handleSubmit(event)}} type="submit">Envoyer</button>
+			<button onClick={() => {
+				handleSubmit(event)
+				navigate('/booklistpage')
+			}} type="submit">Envoyer</button>
 
 		</form>
 	)

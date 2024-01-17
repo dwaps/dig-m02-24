@@ -25,12 +25,20 @@ export default function BookListProvider({ children }) {
         setBookList(bookListState.filter(book => bookToDelete.id !== book.id))
     }
 
-    function addBook(book){
-      setBookList(bookListState.add(book))
+    function createOrUpdate(newBook){
+      if(newBook.id === undefined){
+        //CREATE
+        newBook.id = Math.max(...bookListState.map(book => book.id)) + 1
+        setBookList([ ...bookListState, newBook ])
+      } else {
+        //update
+        let bookToReplace = bookListState.find(book => newBook.id === book.id)
+        setBookList(bookListState[bookToReplace] = newBook)
+      }
     }
 
     return (
-        <BookListContext.Provider value={{ bookListState, filterBooks, deleteBook }}>
+        <BookListContext.Provider value={{ bookListState, filterBooks, deleteBook, createOrUpdate }}>
             { children }
         </BookListContext.Provider>
     )
