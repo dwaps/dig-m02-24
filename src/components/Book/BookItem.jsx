@@ -4,10 +4,11 @@ import styles from "./BookItem.module.scss";
 
 /**
  * @param {Object} props
- * @param {import("../../contexts/BookContext.jsx").Book} props.book
- * @param {Function} props.onDelete
+ * @param {Number} props.index
+ * @param {import("../../contexts/BookContext").Book} props.book
+ * @param {(Number) => void} props.onDelete
  */
-export default function BookItem({book, onDelete}) {
+export default function BookItem({index, book, onDelete}) {
     return (
         <li className={styles.bookItem}>
             <div className={styles.bookItem__header}>
@@ -26,7 +27,7 @@ export default function BookItem({book, onDelete}) {
                         Edit
                     </Link>
 
-                    <span to={`/books/${book.id}/delete`} className={styles.link__delete}>
+                    <span to={`/books/${book.id}/delete`} className={styles.link__delete} onClick={() => onDelete(index)}>
                         Delete
                     </span>
                 </div>

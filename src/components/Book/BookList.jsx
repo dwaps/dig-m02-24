@@ -3,16 +3,20 @@ import BookItem from "./BookItem.jsx";
 
 /**
  * @param {Object} props
- * @param {import("../../contexts/BookContext.jsx").Book[]} props.books
+ * @param {import("../../contexts/BookContext").Book[]} props.books
  * @param {Number[]} props.indices
+ * @param {(Number) => void} props.onDeleteBook
  */
-export default function BookList({books, indices}) {
-    const handleDeleteBook = () => {};
-
+export default function BookList({books, indices, onDeleteBook}) {
     return (
         <ul className={styles.bookTable}>
             {indices.map(index => (
-                <BookItem key={index} book={books[index]} onDelete={handleDeleteBook} />
+                <BookItem
+                    key={index}
+                    index={index}
+                    book={books[index]}
+                    onDelete={onDeleteBook}
+                />
             ))}
         </ul>
     );

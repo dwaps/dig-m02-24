@@ -19,10 +19,18 @@ export default function BooksPage() {
     };
 
     /**
+     * @param {Number} index
+     */
+    const handleDeleteBook = index => {
+        console.log(index);
+    };
+
+    /**
      * @param {Number} order
      */
     const sortByAuthorName = order => setIndices(indices => {
         if (order === 0) {
+            // Reset the sort order
             return getUnsortedIndices();
         }
 
@@ -44,7 +52,7 @@ export default function BooksPage() {
                     Books
                 </h1>
 
-                <select onChange={handleChangeOrder} defaultValue={0}>
+                <select className={styles.listHeader__select} defaultValue={0} onChange={handleChangeOrder}>
                     <option value={0}>
                         Sort by
                     </option>
@@ -59,7 +67,7 @@ export default function BooksPage() {
                 </select>
             </div>
 
-            <BookList books={books} indices={indices} />
+            <BookList books={books} indices={indices} onDeleteBook={handleDeleteBook} />
         </>
     );
 }

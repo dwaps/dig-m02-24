@@ -7,4 +7,14 @@
   h1 {
     margin: 0;
   }
+
+  &__select {
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    background-color: #646cff20;
+    color: #646cff;
+    cursor: pointer;
+    font-weight: 500;
+  }
 }
