@@ -1,6 +1,10 @@
 .bookForm {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   row-gap: 16px;
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

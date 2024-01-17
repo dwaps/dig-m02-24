@@ -65,22 +65,25 @@ export default function BookForm({book: _book}) {
             <input
                 type="text"
                 value={book.title}
-                placeholder="Name"
+                placeholder="Title *"
                 maxLength={255}
                 required
                 onChange={handleChangeTitle}
             />
 
             <textarea
-                placeholder="Summary"
+                placeholder="Summary *"
                 defaultValue={book.summary}
+                rows={6}
                 required
                 onChange={handleChangeSummary}
             />
 
-            <button type="submit">
-                Submit
-            </button>
+            <div className={styles.bookForm__footer}>
+                <button type="submit">
+                    Submit
+                </button>
+            </div>
         </form>
     );
 }
