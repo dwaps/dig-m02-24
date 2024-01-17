@@ -5,10 +5,17 @@ import { Button, Modal, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function BooksPage() {
-  const { livres, trierParAuteur, supprimerLivre, modifierLivre, ajouterLivre } = useLivres();
+  const {
+    livres,
+    trierParAuteur,
+    supprimerLivre,
+    modifierLivre,
+    ajouterLivre,
+  } = useLivres();
   const [selectedBook, setSelectedBook] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleEditClick = (livre) => {
     setSelectedBook(livre);
@@ -41,17 +48,39 @@ function BooksPage() {
     setShowCreateModal(false);
   };
 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredLivres = livres.filter((livre) =>
+    livre.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <h2 className="p-4">Liste de Livres</h2>
       <Button variant="primary" onClick={handleCreateClick} className="mb-3 btn btn-light">
         Créer un Nouveau Livre
       </Button>
+
+      <Form.Group controlId="search">
+        <Form.Control
+          type="text"
+          placeholder="Rechercher un livre"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </Form.Group>
+
       <table className="table table-hover table-dark">
         <thead>
           <tr>
             <th scope="col">Titre</th>
-            <th scope="col" onClick={trierParAuteur} style={{ cursor: "pointer" }}>
+            <th
+              scope="col"
+              onClick={trierParAuteur}
+              style={{ cursor: "pointer" }}
+            >
               Auteur
             </th>
             <th scope="col">Genre</th>
@@ -59,7 +88,7 @@ function BooksPage() {
           </tr>
         </thead>
         <tbody>
-          {livres.map((livre, index) => (
+          {filteredLivres.map((livre, index) => (
             <tr key={index}>
               <td>
                 <Link to={`/livres/${livre.title}`}>{livre.title}</Link>
@@ -68,7 +97,9 @@ function BooksPage() {
               <td>{livre.genre}</td>
               <td>
                 <button onClick={() => handleEditClick(livre)}>Éditer</button>
-                <button onClick={() => handleDeleteClick(livre)}>Supprimer</button>
+                <button onClick={() => handleDeleteClick(livre)}>
+                  Supprimer
+                </button>
               </td>
             </tr>
           ))}
@@ -87,7 +118,9 @@ function BooksPage() {
                 type="text"
                 placeholder="Entrez le titre"
                 value={selectedBook?.title || ""}
-                onChange={(e) => setSelectedBook({ ...selectedBook, title: e.target.value })}
+                onChange={(e) =>
+                  setSelectedBook({ ...selectedBook, title: e.target.value })
+                }
               />
             </Form.Group>
 
@@ -97,7 +130,9 @@ function BooksPage() {
                 type="text"
                 placeholder="Entrez l'auteur"
                 value={selectedBook?.author || ""}
-                onChange={(e) => setSelectedBook({ ...selectedBook, author: e.target.value })}
+                onChange={(e) =>
+                  setSelectedBook({ ...selectedBook, author: e.target.value })
+                }
               />
             </Form.Group>
 
@@ -107,7 +142,9 @@ function BooksPage() {
                 type="text"
                 placeholder="Entrez le genre"
                 value={selectedBook?.genre || ""}
-                onChange={(e) => setSelectedBook({ ...selectedBook, genre: e.target.value })}
+                onChange={(e) =>
+                  setSelectedBook({ ...selectedBook, genre: e.target.value })
+                }
               />
             </Form.Group>
           </Form>
@@ -134,7 +171,9 @@ function BooksPage() {
                 type="text"
                 placeholder="Entrez le titre"
                 value={selectedBook?.title || ""}
-                onChange={(e) => setSelectedBook({ ...selectedBook, title: e.target.value })}
+                onChange={(e) =>
+                  setSelectedBook({ ...selectedBook, title: e.target.value })
+                }
               />
             </Form.Group>
 
@@ -144,7 +183,9 @@ function BooksPage() {
                 type="text"
                 placeholder="Entrez l'auteur"
                 value={selectedBook?.author || ""}
-                onChange={(e) => setSelectedBook({ ...selectedBook, author: e.target.value })}
+                onChange={(e) =>
+                  setSelectedBook({ ...selectedBook, author: e.target.value })
+                }
               />
             </Form.Group>
 
@@ -154,7 +195,9 @@ function BooksPage() {
                 type="text"
                 placeholder="Entrez le genre"
                 value={selectedBook?.genre || ""}
-                onChange={(e) => setSelectedBook({ ...selectedBook, genre: e.target.value })}
+                onChange={(e) =>
+                  setSelectedBook({ ...selectedBook, genre: e.target.value })
+                }
               />
             </Form.Group>
           </Form>
