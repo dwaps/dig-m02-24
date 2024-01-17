@@ -8,42 +8,49 @@ export default function BookListProvider({ children }) {
 	const [bookListState, setBookList] = useState(bookList);
 	const [bookListStateCopy, setBookListStateCopy] = useState(bookListState)
 
+	function setListStateAndListStateCopy(val1, val2) {
+		setBookList(val1)
+		setBookListStateCopy(val2)
+	}
 
-	function filterBooks(isAsc) {
-		let bookListOrdered
-		let bookListCopyOrdered
-		if (isAsc) {
-			bookListOrdered = bookListState.toSorted(function (first, second) {
-				return first.profile.name.localeCompare(second.profile.name)
-			})
-			bookListCopyOrdered = bookListStateCopy.toSorted(function (first, second) {
-				return first.profile.name.localeCompare(second.profile.name)
-			})
+	function filterBooks(asc) {
+		let bookListOrdered, bookListCopyOrdered
+		if (asc) {
+			bookListOrdered = bookListState.toSorted(
+				(firstElt, secondElt) => firstElt.profile.name.localeCompare(secondElt.profile.name)
+			)
+			bookListCopyOrdered = bookListStateCopy.toSorted(
+				(firstElt, secondElt) => firstElt.profile.name.localeCompare(secondElt.profile.name)
+			)
 		} else {
-			bookListOrdered = bookListState.toSorted(function (first, second) {
-				return second.profile.name.localeCompare(first.profile.name)
-			})
-			bookListCopyOrdered = bookListStateCopy.toSorted(function (first, second) {
-				return second.profile.name.localeCompare(first.profile.name)
-			})
+			bookListOrdered = bookListState.toSorted(
+				(firstElt, secondElt) => secondElt.profile.name.localeCompare(firstElt.profile.name)
+			)
+			bookListCopyOrdered = bookListStateCopy.toSorted(
+				(firstElt, secondElt) => secondElt.profile.name.localeCompare(firstElt.profile.name)
+			)
 		}
-		setBookList(bookListOrdered)
-		setBookListStateCopy(bookListCopyOrdered)
+
+		setListStateAndListStateCopy(bookListOrdered, bookListCopyOrdered)
 	}
 
 	function deleteBook(bookToDelete) {
-		setBookList(bookListState.filter(book => bookToDelete.id !== book.id))
-		setBookListStateCopy(bookListStateCopy.filter(book => bookToDelete.id !== book.id))
+		setListStateAndListStateCopy(
+			bookListState.filter(book => bookToDelete.id !== book.id), 
+			bookListStateCopy.filter(book => bookToDelete.id !== book.id)
+		)
 	}
 
 	function createOrUpdate(newBook) {
 		let tempList = bookListState
 		if (!newBook.id) {
 			newBook.id = Math.max(...bookListState.map(book => book.id)) + 1
+			newBook.bookImg = `https://picsum.photos/id/${newBook.id}/200/200`
+			newBook.profile.photo = `https://picsum.photos/id/${newBook.id * 10}/200/200`
 		} else {
 			tempList = bookListState.filter(book => newBook.id !== book.id)
 		}
-
+		
 		setBookList([...tempList, newBook])
 	}
 

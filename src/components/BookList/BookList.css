@@ -19,6 +19,11 @@
     justify-content: space-around;
 }
 
+.book-list-manager-search {
+    display: flex;
+    align-items: center;
+}
+
 .book-list-manager div > * {
     margin: 0 12px;
 }
