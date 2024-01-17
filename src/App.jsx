@@ -10,6 +10,7 @@ import ContactPage from "./pages/ContactPage";
 import EditBookPage from "./pages/Book/EditBookPage";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFoundPage";
+import CreateBookPage from "./pages/Book/CreateBookPage";
 
 export default function App() {
     return (
@@ -22,6 +23,7 @@ export default function App() {
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/books" element={<BooksPage />} />
+                            <Route path="/books/create" element={<CreateBookPage />} />
                             <Route path="/books/:id" element={<BookPage />} />
                             <Route path="/books/:id/edit" element={<EditBookPage />} />
                             <Route path="/contact" element={<ContactPage />} />

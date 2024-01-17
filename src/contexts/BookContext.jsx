@@ -73,6 +73,7 @@ export default BookContext;
  * @param {React.ReactNode} children
  */
 export function BookProvider({children}) {
+    const authors = _authors;
     const [books, setBooks] = useState(_books);
     const [indices, setIndices] = useState(Array.from({length: books.length}, (_, i) => i));
 
@@ -97,6 +98,14 @@ export function BookProvider({children}) {
     });
 
     /**
+     * @param {Book} book
+     */
+    const createBook = book => {
+        setIndices(Array.from({length: books.length + 1}, (_, i) => i));
+        setBooks(previousBooks => [...previousBooks, book]);
+    };
+
+    /**
      * @param {Number} index
      */
     const deleteBook = index => {
@@ -105,7 +114,7 @@ export function BookProvider({children}) {
     };
 
     return (
-        <BookContext.Provider value={{books, indices, sortByAuthorName, deleteBook}}>
+        <BookContext.Provider value={{authors, books, indices, createBook, deleteBook, sortByAuthorName}}>
             {children}
         </BookContext.Provider>
     );
