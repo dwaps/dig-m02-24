@@ -1,8 +1,11 @@
-import { books } from "../../../models";
+import { useContext } from "react";
 import { LinkContainer } from "react-router-bootstrap";
+import { BooksContext } from "../../../utils/context";
 import "./Books.css";
 
 function Books() {
+  const { books } = useContext(BooksContext);
+
   return (
     <tbody>
       {books.map((b) => (
