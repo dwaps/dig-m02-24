@@ -25,6 +25,9 @@ export default function BookListProvider({ children }) {
         setBookList(bookListState.filter(book => bookToDelete.id !== book.id))
     }
 
+    function addBook(book){
+      setBookList(bookListState.add(book))
+    }
 
     return (
         <BookListContext.Provider value={{ bookListState, filterBooks, deleteBook }}>

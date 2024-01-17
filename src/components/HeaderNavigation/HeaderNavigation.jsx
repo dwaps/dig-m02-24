@@ -11,7 +11,7 @@ import BookListPage from "../../pages/BookListPage";
 import BookPage from "../../pages/BookPage";
 import NotFound from "../../pages/NotFound";
 import Contact from "../../pages/Contact";
-import CreateBookPage from "../../pages/CreateBookPage";
+import CreateBookPage from "../../pages/BookFormPage";
 
 const HeaderNav = () => (
   <ul className="navigation">
