@@ -13,6 +13,7 @@ function BookUpdate() {
 
   const [valueNom, setValueNom] = useState(book ? book.name : "");
   const [valueAuteur, setValueAuteur] = useState(book ? book.auteur : "");
+  const [valuePrix, setValuePrix] = useState(book ? book.price : 0);
   const [valueDescription, setValueDescription] = useState(
     book ? book.description : ""
   );
@@ -23,17 +24,23 @@ function BookUpdate() {
   const handleChangeAuteur = (e) => {
     setValueAuteur(e.target.value);
   };
+  const handleChangePrix = (e) => {
+    setValuePrix(e.target.value);
+    console.log(e.target.value);
+  };
   const handleChangeDescription = (e) => {
     setValueDescription(e.target.value);
   };
 
-  const commitValuesBook = (newNom, newAuteur, newDescription) => {
+  const commitValuesBook = (newNom, newAuteur, newPrix, newDescription) => {
     setValueNom(newNom);
     setValueAuteur(newAuteur);
+    setValuePrix(newPrix);
     setValueDescription(newDescription);
 
     book.name = newNom;
     book.auteur = newAuteur;
+    book.price = newPrix;
     book.description = newDescription;
 
     updBook(book);
@@ -65,6 +72,17 @@ function BookUpdate() {
           />
         </div>
         <div className="form-field">
+          <label htmlFor="price">Prix du livre : </label>
+          <input
+            id="price"
+            name="price"
+            type="number"
+            step="0.01"
+            value={valuePrix}
+            onChange={handleChangePrix}
+          />
+        </div>
+        <div className="form-field">
           <label htmlFor="description">Description du livre : </label>
           <textarea
             id="description"
@@ -78,7 +96,12 @@ function BookUpdate() {
           <Link to="/">
             <button
               onClick={() =>
-                commitValuesBook(valueNom, valueAuteur, valueDescription)
+                commitValuesBook(
+                  valueNom,
+                  valueAuteur,
+                  parseFloat(valuePrix),
+                  valueDescription
+                )
               }
             >
               Update

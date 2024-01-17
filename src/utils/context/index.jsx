@@ -44,6 +44,7 @@ export const BookProvider = ({ children }) => {
     newBook.description = oldBook.description;
     newBook.auteur = oldBook.auteur;
     newBook.price = oldBook.price;
+    console.log(newBook);
     setTabOfBooks(
       [...tabOfBooks].map((b) => (b.id === newBook.id ? newBook : b))
     );
