@@ -1,22 +1,18 @@
 import "./BookUpdate.css";
 
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { books } from "../../models/index";
 import { useState } from "react";
 import { BookContext } from "../../utils/context";
 import { useContext } from "react";
 
-function BookUpdate() {
-  const { updBook } = useContext(BookContext);
-  const { id } = useParams();
-  const book = books.find((b) => b.id === id);
+function BookCreate() {
+  const { addBook } = useContext(BookContext);
 
-  const [valueNom, setValueNom] = useState(book ? book.name : "");
-  const [valueAuteur, setValueAuteur] = useState(book ? book.auteur : "");
-  const [valuePrix, setValuePrix] = useState(book ? book.price : 0);
-  const [valueDescription, setValueDescription] = useState(
-    book ? book.description : ""
-  );
+  const [valueNom, setValueNom] = useState("");
+  const [valueAuteur, setValueAuteur] = useState("");
+  const [valuePrix, setValuePrix] = useState(0);
+  const [valueDescription, setValueDescription] = useState("");
 
   const handleChangeNom = (e) => {
     setValueNom(e.target.value);
@@ -37,18 +33,24 @@ function BookUpdate() {
     setValuePrix(newPrix);
     setValueDescription(newDescription);
 
-    book.name = newNom;
-    book.auteur = newAuteur;
-    book.price = newPrix;
-    book.description = newDescription;
+    const newBook = {
+      id: "00" + (books.length + 1),
+      name: newNom,
+      auteur: newAuteur,
+      price: newPrix,
+      description: newDescription,
+      photo:
+        "https://images.unsplash.com/photo-1527176930608-09cb256ab504?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    };
 
-    updBook(book);
+    console.log(newBook);
+
+    addBook(newBook);
   };
 
   return (
-    <div className="form-update">
-      <h2>Mise à jour du livre ID {book.id}</h2>
-      <img src={book.photo} alt={"Livre " + book.id} />
+    <div className="form-create">
+      <h2>Nouveau livre</h2>
       <div className="form-content">
         <div className="form-field">
           <label htmlFor="nom">Nom du livre : </label>
@@ -103,7 +105,7 @@ function BookUpdate() {
                 )
               }
             >
-              Update
+              Créer
             </button>
           </Link>
           <Link to="/">
@@ -115,4 +117,4 @@ function BookUpdate() {
   );
 }
 
-export default BookUpdate;
+export default BookCreate;

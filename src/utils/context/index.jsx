@@ -51,10 +51,7 @@ export const BookProvider = ({ children }) => {
   }
 
   function addBook(book) {
-    const newTab = [];
-    tabOfBooks.forEach((b) => newTab.push(b));
-    newTab.push(book);
-    setTabOfBooks(newTab);
+    tabOfBooks.push(book);
   }
 
   function deleteFromTableau(book) {

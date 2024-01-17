@@ -2,6 +2,7 @@ import "./BooksPage.css";
 
 import Book from "./Book";
 
+import { Link } from "react-router-dom";
 import { BookContext } from "../../utils/context";
 import { useContext } from "react";
 
@@ -12,6 +13,9 @@ function BooksPage() {
       <h1>Tableau de livres</h1>
       <div className="content-books">
         <div className="books-tab">
+          <Link to="/new-book">
+            <button className="btn-new-book">Nouveau livre</button>
+          </Link>
           <table>
             <thead>
               <tr>

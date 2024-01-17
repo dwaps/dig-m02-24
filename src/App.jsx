@@ -2,6 +2,7 @@ import "./App.css";
 
 import BookPageDetails from "./components/book-components/BookPageDetails";
 import BookUpdate from "./components/book-components/BookUpdate";
+import BookCreate from "./components/book-components/BookCreate";
 import MainContent from "./components/MainContent";
 import { BookProvider } from "./utils/context";
 
@@ -19,6 +20,14 @@ function App() {
             element={
               <BookProvider>
                 <BookUpdate />
+              </BookProvider>
+            }
+          />
+          <Route
+            path="/new-book"
+            element={
+              <BookProvider>
+                <BookCreate />
               </BookProvider>
             }
           />
