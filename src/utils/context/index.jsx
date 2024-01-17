@@ -41,7 +41,7 @@ export const BookProvider = ({ children }) => {
   function filterBooksByName(text) {
     if (text !== "") {
       setTabOfBooks(
-        [...tabOfBooks].filter((b) =>
+        [...books].filter((b) =>
           b.name.toLowerCase().includes(text.toLowerCase())
         )
       );
