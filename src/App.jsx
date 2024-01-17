@@ -1,8 +1,6 @@
 import Books from "./components/book/books";
 import { BookContextProvider } from "./components/hooks/useBook";
-import Profil from "./components/profil/profil";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 function App() {

@@ -1,25 +1,23 @@
 import { useBook } from "../hooks/useBook";
 import { useNavigate } from "react-router-dom";
 
-const BookRow = ({ id ,title, author, year , books }) => {
+const BookRow = ({ id, title, author, year }) => {
   const { setBook } = useBook();
+
   const navigate = useNavigate();
-  
 
   const deleteBook = () => {
     if (window.confirm(" est vous sur de vouloir supprimer ce livre ?")) {
-        let newBook = books.filter((b) => b.id !== id);
-        
-        console.log(newBook);
+      // delete
     }
-  }
+  };
 
   return (
     <tr>
       <td
         onClick={() => {
           setBook({ title, author, year });
-          navigate("/book-details");
+          navigate("/book-details", { state: { id, title, author, year } });
         }}
       >
         {title}
