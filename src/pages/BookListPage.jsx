@@ -1,12 +1,18 @@
 import  '../components/BookList/BookList.css';
-import { useContext } from "react";
+import { useContext, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Book from '../components/Book/Book'
 import { BookListContext } from './../models/utils/context/index';
 
 
 function BookListPage() {
-	const {bookListState, filterBooks, deleteBook} = useContext(BookListContext)
+	const {bookListState, filterBooks, deleteBook, searchBookList} = useContext(BookListContext)
+
+	let searchWord = useRef('')
+
+	function handleInputChange(){
+		searchBookList(searchWord)
+	}
 	
 	return (
 		<>
@@ -28,7 +34,7 @@ function BookListPage() {
 
 					<div className="book-list-manager-search">
 						<label htmlFor="booktitle">Search for a book title:</label>
-						<input id="booktitle" name="booktitle" type="text" />
+						<input id="booktitle" name="booktitle" defaultValue={searchWord.current} ref={searchWord} onChange={()=> handleInputChange()} type="text" />
 					</div>
 
 					<Link to={'/bookform'}>
