@@ -14,7 +14,7 @@ export const books = [
       "https://images.unsplash.com/photo-1527176930608-09cb256ab504?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Le chat démoniaque",
     description:
-      "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches ! 🐾🕵️‍♂️",
+      "Explorez le monde mystérieux des chats avec ce roman captivant, mêlant humour félin et aventures insoupçonnées.",
     auteur: "Isabella Montclair",
     price: 45,
   },
@@ -24,7 +24,7 @@ export const books = [
       "https://images.unsplash.com/photo-1527176930608-09cb256ab504?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Une histoire de chats",
     description:
-      "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches ! 🐾🕵️‍♂️",
+      "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches !",
     auteur: "Ezekiel Thornfield",
     price: 12.99,
   },
@@ -34,7 +34,7 @@ export const books = [
       "https://images.unsplash.com/photo-1527176930608-09cb256ab504?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Chat va et toi ?",
     description:
-      "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches ! 🐾🕵️‍♂️",
+      "Plongez dans une épopée féline pleine de rebondissements, où les chats révèlent des secrets enfouis et des destins liés",
     auteur: "Serena Nightshade",
     price: 32.49,
   },
@@ -44,7 +44,7 @@ export const books = [
       "https://images.unsplash.com/photo-1527176930608-09cb256ab504?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Jamais deux sans chat",
     description:
-      "Bruce, le chat détective, résout des mystères félins avec son flair et ses ronrons. Un polar à griffes et moustaches ! 🐾🕵️‍♂️",
+      "Découvrez l'amitié improbable entre un chat espiègle et un écrivain désabusé dans ce récit chaleureux et plein de surprises.",
     auteur: "Lucius Stormrider",
     price: 7.85,
   },

@@ -1,6 +1,5 @@
 import "./Book.css";
 import Photo from "./Photo";
-import Description from "./Description";
 import Price from "./Price";
 import Auteur from "./Auteur";
 import { useParams } from "react-router-dom";
@@ -19,7 +18,7 @@ function BookPageDetails() {
   console.log(book.name);
   return (
     <div>
-      <h1>Détails du livre</h1>
+      <h1>Détails du livre </h1>
       <div className="book-photo">
         <Photo key={book.id} photo={book.photo} />
       </div>
@@ -27,7 +26,8 @@ function BookPageDetails() {
         <Auteur key={book.id} auteur={book.auteur} />
       </div>
       <div className="book-description">
-        <Description key={book.id} book={book} />
+        <h2>{book.name}</h2>
+        <p>{book.description}</p>
       </div>
       <div className="book-price">
         <Price key={book.id} price={book.price} />
