@@ -6,6 +6,7 @@ import Auteur from "./Auteur";
 
 import { BookContext } from "../../utils/context";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 function Book(props) {
   const { delFromTab } = useContext(BookContext);
@@ -24,7 +25,9 @@ function Book(props) {
         <Price key={props.book.id} price={props.book.price} />
       </td>
       <td className="book-actions">
-        <button>Update</button>
+        <Link to={"/book-upd/" + props.book.id}>
+          <button>Update</button>
+        </Link>
         <button onClick={() => delFromTab(props.book)}>Supprimer</button>
       </td>
     </tr>

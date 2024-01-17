@@ -9,13 +9,10 @@ import { Link } from "react-router-dom";
 
 function BookPageDetails() {
   const { id } = useParams();
-  console.log(id);
   const book = books.find((b) => b.id === id);
-  console.log(book);
   if (!book) {
     return <div>Book not found</div>;
   }
-  console.log(book.name);
   return (
     <div>
       <h1>Détails du livre </h1>

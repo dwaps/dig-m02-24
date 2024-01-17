@@ -38,6 +38,24 @@ export const BookProvider = ({ children }) => {
     );
   }
 
+  function updateBook(oldBook) {
+    const newBook = tabOfBooks.find((b) => b.id === oldBook.id);
+    newBook.name = oldBook.name;
+    newBook.description = oldBook.description;
+    newBook.auteur = oldBook.auteur;
+    newBook.price = oldBook.price;
+    setTabOfBooks(
+      [...tabOfBooks].map((b) => (b.id === newBook.id ? newBook : b))
+    );
+  }
+
+  function addBook(book) {
+    const newTab = [];
+    tabOfBooks.forEach((b) => newTab.push(b));
+    newTab.push(book);
+    setTabOfBooks(newTab);
+  }
+
   function deleteFromTableau(book) {
     const newTab = [];
     tabOfBooks.forEach((b) => {
@@ -55,6 +73,8 @@ export const BookProvider = ({ children }) => {
         triTableauAsc: trierTableauAsc,
         triTableauDesc: trierTableauDesc,
         delFromTab: deleteFromTableau,
+        updBook: updateBook,
+        addBook: addBook,
       }}
     >
       {children}
