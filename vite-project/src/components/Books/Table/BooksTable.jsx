@@ -1,25 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BooksTableDetail from "./BooksTableDetail";
 
-function BooksTable({ allBooks, onDeleteBook }) {
+function BooksTable({ allBooks, onDeleteBook, onUpdateBook, onSortBooks }) {
   const [sortOrder, setSortOrder] = useState("asc");
   const [sortedBooks, setSortedBooks] = useState(allBooks);
 
+  useEffect(() => {
+    setSortedBooks([...allBooks]);
+  }, [allBooks]);
+
   const handleSortByAuthor = () => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
-
-    const sorted = allBooks.slice().sort((a, b) => {
-      const comparison = a.author.localeCompare(b.author);
-      return sortOrder === "asc" ? comparison : -comparison;
-    });
-
-    setSortedBooks(sorted);
+    onSortBooks();
     setSortOrder(newSortOrder);
   };
 
   const handleDelete = (bookId) => {
-    const updatedBooks = sortedBooks.filter((book) => book.id !== bookId);
-    onDeleteBook(updatedBooks);
+    onDeleteBook(bookId);
+  };
+
+  const handleUpdate = (book) => {
+    book.title = "Nouveau titre";
+    onUpdateBook(book);
   };
 
   return (
@@ -43,6 +45,7 @@ function BooksTable({ allBooks, onDeleteBook }) {
               key={book.id}
               book={book}
               onDelete={() => handleDelete(book.id)}
+              onUpdate={() => handleUpdate(book)}
             ></BooksTableDetail>
           ))}
         </tbody>

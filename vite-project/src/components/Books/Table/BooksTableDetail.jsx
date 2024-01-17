@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./BooksTableDetail.css";
 
-function BooksTableDetail({ book, onDelete }) {
+function BooksTableDetail({ book, onDelete, onUpdate }) {
   return (
     <tr>
       <td>
@@ -12,7 +12,7 @@ function BooksTableDetail({ book, onDelete }) {
       </td>
       <td style={{ fontWeight: "bold" }}>{book.author}</td>
       <td>
-        <button>Editer</button>
+        <button onClick={() => onUpdate(book)}>Editer</button>
       </td>
       <td>
         <button onClick={() => onDelete(book.id)}>Supprimer</button>
