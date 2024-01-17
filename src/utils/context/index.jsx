@@ -27,11 +27,25 @@ export const BookProvider = ({ children }) => {
   const [tabOfBooks, setTabOfBooks] = useState(books);
 
   function trierTableauAsc() {
-    setTabOfBooks([...books].sort((a, b) => a.auteur.localeCompare(b.auteur)));
+    setTabOfBooks(
+      [...tabOfBooks].sort((a, b) => a.auteur.localeCompare(b.auteur))
+    );
   }
 
   function trierTableauDesc() {
-    setTabOfBooks([...books].sort((a, b) => b.auteur.localeCompare(a.auteur)));
+    setTabOfBooks(
+      [...tabOfBooks].sort((a, b) => b.auteur.localeCompare(a.auteur))
+    );
+  }
+
+  function deleteFromTableau(book) {
+    const newTab = [];
+    tabOfBooks.forEach((b) => {
+      if (b.id !== book.id) {
+        newTab.push(b);
+      }
+    });
+    setTabOfBooks(newTab);
   }
 
   return (
@@ -40,6 +54,7 @@ export const BookProvider = ({ children }) => {
         tabOfBooks,
         triTableauAsc: trierTableauAsc,
         triTableauDesc: trierTableauDesc,
+        delFromTab: deleteFromTableau,
       }}
     >
       {children}

@@ -4,7 +4,11 @@ import Description from "./Description";
 import Price from "./Price";
 import Auteur from "./Auteur";
 
+import { BookContext } from "../../utils/context";
+import { useContext } from "react";
+
 function Book(props) {
+  const { delFromTab } = useContext(BookContext);
   return (
     <tr>
       <td className="book-photo">
@@ -21,7 +25,7 @@ function Book(props) {
       </td>
       <td className="book-actions">
         <button>Update</button>
-        <button>Supprimer</button>
+        <button onClick={() => delFromTab(props.book)}>Supprimer</button>
       </td>
     </tr>
   );
