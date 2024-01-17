@@ -10,17 +10,24 @@ export default function BookListProvider({ children }) {
 
     function filterBooks(isAsc) {
       let myBooksOrdered
+      let myMemoBooks
       if (isAsc) {
         myBooksOrdered = myBooks.toSorted(function (ca, cb) {
+          return ca.autor.localeCompare(cb.autor)
+        })
+        myMemoBooks = memoBooks.toSorted(function (ca, cb) {
           return ca.autor.localeCompare(cb.autor)
         })
       } else {
         myBooksOrdered = myBooks.toSorted(function (ca, cb) {
           return cb.autor.localeCompare(ca.autor)
         })
+        myMemoBooks = memoBooks.toSorted(function (ca, cb) {
+            return cb.autor.localeCompare(ca.autor)
+        })
       }
       setMyBooks(myBooksOrdered)
-      setMemoBooks(myBooks)
+      setMemoBooks(myMemoBooks)
     }
 
     function deleteBook(id) {
