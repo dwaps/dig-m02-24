@@ -101,6 +101,8 @@ export function BookProvider({children}) {
      * @param {Book} book
      */
     const createBook = book => {
+        book.id = (books.at(-1)?.id ?? 0) + 1;
+
         setIndices(Array.from({length: books.length + 1}, (_, i) => i));
         setBooks(previousBooks => [...previousBooks, book]);
     };
