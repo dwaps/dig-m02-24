@@ -5,40 +5,40 @@ import { createContext } from 'react';
 export const BookListContext = createContext()
 
 export default function BookListProvider({ children }) {
-    const [bookListState, setBookList] = useState(bookList);
+	const [bookListState, setBookList] = useState(bookList);
 
-    function filterBooks(isAsc) {
-      let bookListOrdered
-      if (isAsc) {
-        bookListOrdered = bookListState.toSorted(function (ca, cb) {
-          return ca.profile.name.localeCompare(cb.profile.name)
-        })
-      } else {
-        bookListOrdered = bookListState.toSorted(function (ca, cb) {
-          return cb.profile.name.localeCompare(ca.profile.name)
-        })
-      }
-      setBookList(bookListOrdered)
-    }
+	function filterBooks(isAsc) {
+		let bookListOrdered
+		if (isAsc) {
+			bookListOrdered = bookListState.toSorted(function (first, second) {
+				return first.profile.name.localeCompare(second.profile.name)
+			})
+		} else {
+			bookListOrdered = bookListState.toSorted(function (first, second) {
+				return second.profile.name.localeCompare(first.profile.name)
+			})
+		}
+		setBookList(bookListOrdered)
+	}
 
-    function deleteBook(bookToDelete){
-        setBookList(bookListState.filter(book => bookToDelete.id !== book.id))
-    }
+	function deleteBook(bookToDelete) {
+		setBookList(bookListState.filter(book => bookToDelete.id !== book.id))
+	}
 
-    function createOrUpdate(newBook){
-      if(newBook.id === undefined){
-        //CREATE
-        newBook.id = Math.max(...bookListState.map(book => book.id)) + 1
-      } else {
-        //update
-        setBookList(bookListState.filter(book => newBook.id === book.id))
-      }
-      setBookList([ ...bookListState, newBook ])
-    }
+	function createOrUpdate(newBook) {
+		let tempList = bookListState
+		if (!newBook.id) {
+			newBook.id = Math.max(...bookListState.map(book => book.id)) + 1
+		} else {
+			tempList = bookListState.filter(book => newBook.id !== book.id)
+		}
 
-    return (
-        <BookListContext.Provider value={{ bookListState, filterBooks, deleteBook, createOrUpdate }}>
-            { children }
-        </BookListContext.Provider>
-    )
+		setBookList([...tempList, newBook])
+	}
+
+	return (
+		<BookListContext.Provider value={{ bookListState, filterBooks, deleteBook, createOrUpdate }}>
+			{children}
+		</BookListContext.Provider>
+	)
 }

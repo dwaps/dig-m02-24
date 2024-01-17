@@ -1,5 +1,5 @@
-import { Navigate, useParams, useNavigate } from "react-router-dom";
-import { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext, useRef } from "react";
 
 import { BookListContext } from '../../models/utils/context/index';
 
@@ -7,7 +7,7 @@ function BookFormPage({ book }) {
 
 	const navigate = useNavigate()
 	
-	const { bookListState, createOrUpdate } = useContext(BookListContext)
+	const { createOrUpdate } = useContext(BookListContext)
 	
 	let title = useRef(book.title)
 	let summary = useRef(book.summary)
@@ -16,13 +16,10 @@ function BookFormPage({ book }) {
 	let name = useRef(book.profile.name)
 	let bio = useRef(book.profile.bio)
 	
-	let bookCopy 
-
 
 	function handleSubmit(event){
 
 		event.preventDefault()
-
 		
 		book.title = title.current.value
 		book.summary = summary.current.value
