@@ -10,7 +10,7 @@ import BookContext from "../../contexts/BookContext";
  */
 export default function BookForm({book: _book}) {
     const navigate = useNavigate();
-    const {authors, createBook} = useContext(BookContext);
+    const {authors, createOrUpdateBook} = useContext(BookContext);
     const [book, setBook] = useState(_book);
 
     const handleChangeAuthor = event => {
@@ -18,7 +18,7 @@ export default function BookForm({book: _book}) {
 
         setBook(previousBook => ({
             ...previousBook,
-            author: authors[authorIndex]?.id ?? null,
+            author: authors[authorIndex].id,
         }));
     };
 
@@ -43,15 +43,15 @@ export default function BookForm({book: _book}) {
     const handleSubmit = event => {
         event.preventDefault();
 
-        createBook(book);
+        createOrUpdateBook(book);
 
         navigate("/books");
     };
 
     return (
         <form className={styles.bookForm} onSubmit={handleSubmit}>
-            <select defaultValue={null} onChange={handleChangeAuthor}>
-                <option value={null}>
+            <select defaultValue="" required onChange={handleChangeAuthor}>
+                <option value="" disabled={true}>
                     Select an author
                 </option>
 

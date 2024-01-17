@@ -100,18 +100,18 @@ export function BookProvider({children}) {
     /**
      * @param {Book} book
      */
-    const createBook = book => {
-        if (book.id !== null) {
-            // Existing book
-            const index = books.findIndex(value => value.id === book.id);
-
-            setBooks(books.toSpliced(index, 1, book));
-        } else {
+    const createOrUpdateBook = book => {
+        if (book.id === null) {
             // New book
             book.id = (books.at(-1)?.id ?? 0) + 1;
 
             setIndices(Array.from({length: books.length + 1}, (_, i) => i));
             setBooks(previousBooks => [...previousBooks, book]);
+        } else {
+            // Existing book
+            const index = books.findIndex(value => value.id === book.id);
+
+            setBooks(books.toSpliced(index, 1, book));
         }
     };
 
@@ -124,7 +124,7 @@ export function BookProvider({children}) {
     };
 
     return (
-        <BookContext.Provider value={{authors, books, indices, createBook, deleteBook, sortByAuthorName}}>
+        <BookContext.Provider value={{authors, books, indices, createOrUpdateBook, deleteBook, sortByAuthorName}}>
             {children}
         </BookContext.Provider>
     );
