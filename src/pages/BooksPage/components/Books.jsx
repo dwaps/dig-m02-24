@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 import { BooksContext } from "../../../utils/context";
 import "./Books.css";
 
@@ -9,13 +9,13 @@ function Books() {
   return (
     <tbody>
       {books.map((b) => (
-        <LinkContainer key={b.id} to={`/books/${b.id}`}>
-          <tr>
-            <td>{b.title}</td>
-            <td>{b.author}</td>
-            <td>{b.country}</td>
-          </tr>
-        </LinkContainer>
+        <tr key={b.id}>
+          <td>
+            <Link to={`/books/${b.id}`}>{b.title}</Link>
+          </td>
+          <td>{b.author}</td>
+          <td>{b.country}</td>
+        </tr>
       ))}
     </tbody>
   );
