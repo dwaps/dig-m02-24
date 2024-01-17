@@ -1,12 +1,12 @@
+import  '../components/BookList/BookList.css';
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import BookList from "../components/BookList/BookList";
+import Book from '../components/Book/Book'
 import { BookListContext } from './../models/utils/context/index';
 
 
 function BookListPage() {
-
-	const bookList = useContext(BookListContext)
+	const [bookListState, filterBooks, deleteBook] = useContext(BookListContext)
 
 	return (
 		<>
@@ -17,9 +17,12 @@ function BookListPage() {
 						Sort by author:
 						<span>
 							<button onClick={()=> {
-								bookList.handleSortAsc()
+								filterBooks(true)
 							}}>ASC</button>
-							<button>DESC</button>
+
+							<button onClick={()=> {
+								filterBooks(false)
+							}}>DESC</button>
 						</span>
 					</div>
 
@@ -32,7 +35,9 @@ function BookListPage() {
 						<button className="add-book">Ajouter un livre</button>
 					</Link>
 				</div>
-				<BookList bookList={bookList} />
+				<div className="book-list">
+					{bookListState.map(book => <Book key={book.id} book={book} onDeleteBook={deleteBook}/>)}
+				</div>
 			</div>
 		</>
 	)

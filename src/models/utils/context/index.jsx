@@ -11,18 +11,26 @@ export default function BookListProvider({ children }) {
       let bookListOrdered
       if (isAsc) {
         bookListOrdered = bookListState.toSorted(function (ca, cb) {
-          return ca.autor.localeCompare(cb.autor)
+          return ca.profile.name.localeCompare(cb.profile.name)
         })
       } else {
         bookListOrdered = bookListState.toSorted(function (ca, cb) {
-          return cb.autor.localeCompare(ca.autor)
+          return cb.profile.name.localeCompare(ca.profile.name)
         })
       }
       setBookList(bookListOrdered)
     }
 
+    function deleteBook(bookToDelete){
+        console.log('bookTodelete:', bookToDelete)
+        console.log('bookListState:', bookListState)
+        setBookList(bookListState.filter(book => bookToDelete.id !== book.id))
+        console.log("bookListState after update: ", bookListState)
+    }
+
+
     return (
-        <BookListContext.Provider value={[ bookListState, filterBooks ]}>
+        <BookListContext.Provider value={[ bookListState, filterBooks, deleteBook ]}>
             { children }
         </BookListContext.Provider>
     )

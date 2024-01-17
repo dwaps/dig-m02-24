@@ -1,24 +1,35 @@
 import './Book.css';
+import { useContext } from "react";
 import Profile from '../Profile/Profile';
 import BookData from './../BookData/BookData';
+import { BookListContext } from '../../models/utils/context/index';
 import { Link } from "react-router-dom";
 
-const Book = ({book}) => (
-  <div className="Book">
-    <img src={book.bookImg} />
+function Book ({book, onDeleteBook}) {
 
-    <h4>title:</h4>
-    <Link to={`/bookpage/${book.id}`}>{book.title}</Link>
+  const [bookListState] = useContext(BookListContext)
 
-    <h4>Summary:</h4>
-    {book.summary}
-    
-    <h4>Author:</h4>
-    <Profile profile={book.profile} />
+  return (
+    <div className="Book">
+      <img src={book.bookImg} />
 
-    <h4>BookData:</h4> 
-    <BookData data={book.data} />
-  </div>
-);
+      <h4>title:</h4>
+      <Link to={`/bookpage/${book.id}`}>{book.title}</Link>
+
+      <h4>Summary:</h4>
+      {book.summary}
+      
+      <h4>Author:</h4>
+      <Profile profile={book.profile} />
+
+      <h4>BookData:</h4> 
+      <BookData data={book.data} />
+
+      <button onClick={()=>{
+        onDeleteBook(book)
+      }}>Delete</button>
+    </div>
+  )
+};
 
 export default Book;
