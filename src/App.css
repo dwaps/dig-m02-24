@@ -1,9 +1,10 @@
 .app {
-  width: 100%;
+  width: 100vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   user-select: none;
 }
 

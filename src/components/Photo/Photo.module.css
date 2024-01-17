@@ -3,5 +3,6 @@
 }
 
 .PhotoImage {
+    width: 100%;
     max-width: -webkit-fill-available;
 }

@@ -1,0 +1,20 @@
+.HeaderNavigation {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.HeaderNavigation ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.HeaderNavigation a {
+    padding: 15px;
+    border: 1px solid blue;
+    border-radius: 20px;
+}
+
+.HeaderNavigation a:hover {
+    background-color: blue;
+    color: white;
+}

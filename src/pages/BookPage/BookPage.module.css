@@ -1,0 +1,15 @@
+.BookPage {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 5px 15px;
+    gap: 15px;
+}
+
+.BookPageHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}
