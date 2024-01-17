@@ -7,7 +7,7 @@ import BookContext from "../../contexts/BookContext";
 
 export default function BookPage() {
     const bookId = Number(useParams().id);
-    const books = useContext(BookContext);
+    const {books} = useContext(BookContext);
     const book = books.find(book => book.id === bookId);
 
     if (!book) {

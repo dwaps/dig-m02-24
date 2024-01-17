@@ -1,14 +1,17 @@
+import {useContext} from "react";
 import {Link} from "react-router-dom";
 
 import styles from "./BookItem.module.scss";
+import BookContext from "../../contexts/BookContext";
 
 /**
  * @param {Object} props
  * @param {Number} props.index
  * @param {import("../../contexts/BookContext").Book} props.book
- * @param {(Number) => void} props.onDelete
  */
-export default function BookItem({index, book, onDelete}) {
+export default function BookItem({index, book}) {
+    const {deleteBook} = useContext(BookContext);
+
     return (
         <li className={styles.bookItem}>
             <div className={styles.bookItem__header}>
@@ -27,7 +30,7 @@ export default function BookItem({index, book, onDelete}) {
                         Edit
                     </Link>
 
-                    <span to={`/books/${book.id}/delete`} className={styles.link__delete} onClick={() => onDelete(index)}>
+                    <span to={`/books/${book.id}/delete`} className={styles.link__delete} onClick={() => deleteBook(index)}>
                         Delete
                     </span>
                 </div>

@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import "./index.module.scss";
 import Header from "./components/Header";
+import {BookProvider} from "./contexts/BookContext";
 import BookPage from "./pages/Book/BookPage";
 import BooksPage from "./pages/Book/BooksPage";
 import ContactPage from "./pages/ContactPage";
@@ -14,18 +15,20 @@ export default function App() {
     return (
         <StrictMode>
             <BrowserRouter>
-                <Header />
+                <BookProvider>
+                    <Header />
 
-                <main>
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/books" element={<BooksPage />} />
-                        <Route path="/books/:id" element={<BookPage />} />
-                        <Route path="/books/:id/edit" element={<EditBookPage />} />
-                        <Route path="/contact" element={<ContactPage />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </main>
+                    <main>
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/books" element={<BooksPage />} />
+                            <Route path="/books/:id" element={<BookPage />} />
+                            <Route path="/books/:id/edit" element={<EditBookPage />} />
+                            <Route path="/contact" element={<ContactPage />} />
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </main>
+                </BookProvider>
             </BrowserRouter>
         </StrictMode>
     );
