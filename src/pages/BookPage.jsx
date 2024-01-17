@@ -2,15 +2,15 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 
 import Book from "../components/Book/Book";
-import { BookListContext } from './../App'
+import { BookListContext } from './../models/utils/context/index';
 
 import NotFound from "./NotFound";
 
 function BookPage() {
 	const id = Number(useParams().id)
-	const bookList = useContext(BookListContext)
+	const [bookList, filterBooks] = useContext(BookListContext)
 
-	let book = bookList.find(book => book.id === id)
+	let book = bookList.find(book => book.id == id)
 
 	if (!book) {
 		return (

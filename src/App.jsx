@@ -1,27 +1,21 @@
 
 import './App.css'
-import { useState, createContext, useContext } from 'react';
-
 import HeaderNavigation from './components/HeaderNavigation/HeaderNavigation';
-import { bookList } from './models/index'
+import BookListProvider from './models/utils/context/index'
 
-export const BookListContext = createContext() 
 
 function App() {
 
-  const [books, setBook] = useState("")
-
-
-
   return ( 
     <>
-    <div className="app">
-      <BookListContext.Provider value={bookList}>
+      <div className="app">
 
-        <HeaderNavigation />
+        <BookListProvider>
 
-      </BookListContext.Provider>
-    </div>
+          <HeaderNavigation />
+
+        </BookListProvider> 
+      </div>
     </>
 )}
 
