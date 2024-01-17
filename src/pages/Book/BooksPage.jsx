@@ -5,20 +5,37 @@ import BookList from "../../components/Book/BookList";
 import BookContext from "../../contexts/BookContext";
 
 export default function BooksPage() {
-    const books = filter(0);
-    const [sortOrder, setSortOrder] = useState(0);
+    const books = useContext(BookContext);
+    const getUnsortedIndices = () => Array.from({length: books.length}, (_, i) => i);
+    const [indices, setIndices] = useState(getUnsortedIndices());
 
-    const handleChangeSortOrder = event => {
+    /**
+     * @param {React.ChangeEvent<HTMLSelectElement>} event
+     */
+    const handleChangeOrder = event => {
         const order = Number(event.currentTarget.value);
 
-        setSortOrder(previousOrder => {
-            if (order !== previousOrder) {
-                filter();
-            }
-
-            return order;
-        });
+        sortByAuthorName(order);
     };
+
+    /**
+     * @param {Number} order
+     */
+    const sortByAuthorName = order => setIndices(indices => {
+        if (order === 0) {
+            return getUnsortedIndices();
+        }
+
+        return indices.toSorted((a, b) => {
+            const firstBook = books[a];
+            const secondBook = books[b];
+
+            const firstAuthorName = `${firstBook.author.firstName} ${firstBook.author.lastName}`;
+            const secondAuthorName = `${secondBook.author.firstName} ${secondBook.author.lastName}`;
+
+            return firstAuthorName.localeCompare(secondAuthorName) * order;
+        });
+    });
 
     return (
         <>
@@ -27,8 +44,8 @@ export default function BooksPage() {
                     Books
                 </h1>
 
-                <select onChange={handleChangeSortOrder}>
-                    <option value={0} selected>
+                <select onChange={handleChangeOrder} defaultValue={0}>
+                    <option value={0}>
                         Sort by
                     </option>
 
@@ -42,17 +59,7 @@ export default function BooksPage() {
                 </select>
             </div>
 
-            <BookList books={books} />
+            <BookList books={books} indices={indices} />
         </>
     );
-}
-
-/**
- * @param {Number} sortOrder
- */
-function filter(sortOrder) {
-    const unfilteredBooks = useContext(BookContext);
-    const filteredBooks = unfilteredBooks;
-
-    return filteredBooks;
 }
