@@ -6,7 +6,7 @@ import { BookListContext } from './../models/utils/context/index';
 
 
 function BookListPage() {
-	const [bookListState, filterBooks, deleteBook] = useContext(BookListContext)
+	const {bookListState, filterBooks, deleteBook} = useContext(BookListContext)
 
 	return (
 		<>

@@ -22,15 +22,12 @@ export default function BookListProvider({ children }) {
     }
 
     function deleteBook(bookToDelete){
-        console.log('bookTodelete:', bookToDelete)
-        console.log('bookListState:', bookListState)
         setBookList(bookListState.filter(book => bookToDelete.id !== book.id))
-        console.log("bookListState after update: ", bookListState)
     }
 
 
     return (
-        <BookListContext.Provider value={[ bookListState, filterBooks, deleteBook ]}>
+        <BookListContext.Provider value={{ bookListState, filterBooks, deleteBook }}>
             { children }
         </BookListContext.Provider>
     )

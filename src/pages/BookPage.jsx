@@ -8,9 +8,9 @@ import NotFound from "./NotFound";
 
 function BookPage() {
 	const id = Number(useParams().id)
-	const [bookList, filterBooks] = useContext(BookListContext)
+	const { bookListState } = useContext(BookListContext)
 
-	let book = bookList.find(book => book.id == id)
+	let book = bookListState.find(book => book.id == id)
 
 	if (!book) {
 		return (

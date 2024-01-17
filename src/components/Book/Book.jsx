@@ -2,12 +2,9 @@ import './Book.css';
 import { useContext } from "react";
 import Profile from '../Profile/Profile';
 import BookData from './../BookData/BookData';
-import { BookListContext } from '../../models/utils/context/index';
 import { Link } from "react-router-dom";
 
 function Book ({book, onDeleteBook}) {
-
-  const [bookListState] = useContext(BookListContext)
 
   return (
     <div className="Book">
@@ -24,10 +21,13 @@ function Book ({book, onDeleteBook}) {
 
       <h4>BookData:</h4> 
       <BookData data={book.data} />
-
-      <button onClick={()=>{
-        onDeleteBook(book)
-      }}>Delete</button>
+      {
+        !!onDeleteBook && (
+          <button onClick={()=>{
+            onDeleteBook(book)
+          }}>Delete</button>
+        )
+      }
     </div>
   )
 };

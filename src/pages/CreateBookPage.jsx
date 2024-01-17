@@ -3,7 +3,7 @@ import { BookListContext } from '../models/utils/context/index';
 
 
 function CreateBookPage() {
-   const bookList = useContext(BookListContext)
+   const { bookList } = useContext(BookListContext)
 
   return (
     <form className="create-book">
