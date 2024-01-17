@@ -8,9 +8,9 @@ import {
   Routes,
   Route,
   Navigate,
-  //useParams,
 } from "react-router-dom";
-import { BookProvider } from "./utils/context";
+import { BookProvider } from "./utils/context/books";
+import { DetailLivre } from "./components/DetailLivre";
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/Accueil" element={<Accueil />} />
             <Route path="/Livres" element={<Livres />} />
+            <Route path="/Livres/:isbn" element={<DetailLivre />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="*" element={<Navigate to="/Accueil" />} />
           </Routes>
