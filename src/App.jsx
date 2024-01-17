@@ -5,14 +5,16 @@ import {
   Routes,
 } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/HomePage/HomePage";
+import Header from "./components/Header/Header";
 import BooksPage from "./pages/BooksPage/BooksPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   return (
     <div className="app">
       <Router>
+        <Header />
         <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/books" element={<BooksPage />} />
