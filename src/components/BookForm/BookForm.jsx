@@ -9,8 +9,6 @@ function BookFormPage({ book }) {
 	
 	const { bookListState, createOrUpdate } = useContext(BookListContext)
 	
-	// const [book, setBook] = useState(bookListState[0]);
-
 	let title = useRef(book.title)
 	let summary = useRef(book.summary)
 	let publisher = useRef(book.data.publisher)

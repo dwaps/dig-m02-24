@@ -29,12 +29,11 @@ export default function BookListProvider({ children }) {
       if(newBook.id === undefined){
         //CREATE
         newBook.id = Math.max(...bookListState.map(book => book.id)) + 1
-        setBookList([ ...bookListState, newBook ])
       } else {
         //update
-        let bookToReplace = bookListState.find(book => newBook.id === book.id)
-        setBookList(bookListState[bookToReplace] = newBook)
+        setBookList(bookListState.filter(book => newBook.id === book.id))
       }
+      setBookList([ ...bookListState, newBook ])
     }
 
     return (
