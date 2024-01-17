@@ -1,27 +1,61 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import BooksTableDetail from "./BooksTableDetail";
 
 function BooksTable({ allBooks, onDeleteBook, onUpdateBook, onSortBooks }) {
   const [sortOrder, setSortOrder] = useState("asc");
   const [sortedBooks, setSortedBooks] = useState(allBooks);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedBook, setEditedBook] = useState({
+    id: "",
+    title: "",
+    author: "",
+    price: "",
+    stars: "",
+    url: "",
+  });
 
   useEffect(() => {
     setSortedBooks([...allBooks]);
   }, [allBooks]);
 
   const handleSortByAuthor = () => {
-    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     onSortBooks();
-    setSortOrder(newSortOrder);
+    setSortOrder((prevSortOrder) => (prevSortOrder === "asc" ? "desc" : "asc"));
   };
 
   const handleDelete = (bookId) => {
     onDeleteBook(bookId);
   };
 
-  const handleUpdate = (book) => {
-    book.title = "Nouveau titre";
-    onUpdateBook(book);
+  const handleEdit = (book) => {
+    setEditedBook({ ...book });
+    setIsEditing(true);
+  };
+
+  const handleUpdate = () => {
+    console.log(editedBook);
+    onUpdateBook(editedBook);
+    setIsEditing(false);
+    setEditedBook({
+      id: "",
+      title: "",
+      author: "",
+      price: "",
+      stars: "",
+      url: "",
+    });
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    setEditedBook({
+      id: "",
+      title: "",
+      author: "",
+      price: "",
+      stars: "",
+      url: "",
+    });
   };
 
   return (
@@ -45,11 +79,38 @@ function BooksTable({ allBooks, onDeleteBook, onUpdateBook, onSortBooks }) {
               key={book.id}
               book={book}
               onDelete={() => handleDelete(book.id)}
-              onUpdate={() => handleUpdate(book)}
+              onUpdate={() => handleEdit(book)}
             ></BooksTableDetail>
           ))}
         </tbody>
       </table>
+
+      {isEditing && (
+        <div>
+          <label>
+            Titre:
+            <input
+              type="text"
+              value={editedBook.title}
+              onChange={(e) => {
+                setEditedBook({ ...editedBook, title: e.target.value });
+              }}
+            />
+          </label>
+          <label>
+            Auteur:
+            <input
+              type="text"
+              value={editedBook.author}
+              onChange={(e) =>
+                setEditedBook({ ...editedBook, author: e.target.value })
+              }
+            />
+          </label>
+          <button onClick={handleUpdate}>Enregistrer</button>
+          <button onClick={handleCancelEdit}>Annuler</button>
+        </div>
+      )}
     </>
   );
 }

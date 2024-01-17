@@ -33,7 +33,7 @@ export const BooksProvider = ({ children }) => {
 
   const updateBook = (updatedBook) => {
     const newList = booksList.map((book) =>
-      book.title === updatedBook.title ? updatedBook : book
+      book.id === updatedBook.id ? updatedBook : book
     );
     setBooksList(newList);
   };
