@@ -14,11 +14,11 @@ export default function BookForm({book: _book}) {
     const [book, setBook] = useState(_book);
 
     const handleChangeAuthor = event => {
-        const authorId = Number(event.target.value);
+        const authorIndex = Number(event.target.value);
 
         setBook(previousBook => ({
             ...previousBook,
-            author: authors[authorId] ?? null,
+            author: authors[authorIndex]?.id ?? null,
         }));
     };
 
