@@ -23,6 +23,9 @@ export const BooksProvider = ({ children }) => {
   };
 
   const addBook = (newBook) => {
+    newBook.id = booksList[booksList.length - 1].id + 1;
+    newBook.url =
+      "https://i.pinimg.com/236x/37/a9/98/37a99839a447357ee6d3d4b9c991d864.jpg";
     setBooksList((booksList) => [...booksList, newBook]);
   };
 

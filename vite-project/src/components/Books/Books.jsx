@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import BookDetailsPage from "./Table/BooksDetailPage";
 
 function Books() {
-  const { booksList, sortBooks, deleteBook, updateBook } = useBooks();
+  const { booksList, sortBooks, deleteBook, updateBook, addBook } = useBooks();
 
   const handleDelete = (bookId) => {
     deleteBook(bookId);
@@ -18,6 +18,10 @@ function Books() {
 
   const handleUpdate = (updatedBook) => {
     updateBook(updatedBook);
+  };
+
+  const handleCreate = (createdBook) => {
+    addBook(createdBook);
   };
   // const allBooks = dataBooks.books.map((book) => (
   //   <Link key={book.id} to={`/livres/${book.id}`}>
@@ -38,6 +42,7 @@ function Books() {
               onDeleteBook={handleDelete}
               onUpdateBook={handleUpdate}
               onSortBooks={handleSort}
+              onCreateBook={handleCreate}
             />
           }
         />
