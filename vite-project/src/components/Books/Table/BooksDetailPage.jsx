@@ -9,7 +9,8 @@ const BookDetailsPage = ({ allBooks }) => {
       <h2>Details du livre :</h2>
       {bookDetails && (
         <>
-          <h3>{bookDetails.title}</h3>
+          <img width={300} height={400} src={bookDetails.url}></img>
+          <h4>{bookDetails.title}</h4>
           <p>Auteur : {bookDetails.author}</p>
           <p style={{ color: bookDetails.stars > 5 ? "green" : "orange" }}>
             Note : {bookDetails.stars}
