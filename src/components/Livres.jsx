@@ -4,8 +4,13 @@ import "./Livres.css";
 import { Link } from "react-router-dom";
 
 export const Livres = () => {
-  const { books, deleteBook, toggleEdit, endEdit, save } =
+  const { books, deleteBook, toggleEdit, endEdit, save, setBooks } =
     useContext(BookContext);
+
+  const sortBookByAuthor = () => {
+    console.log("é");
+    setBooks(books.slice().reverse());
+  };
 
   return (
     <div>
@@ -28,21 +33,13 @@ export const Livres = () => {
       <table className="m-1 table table-hover table-light table-bordered">
         <thead>
           <tr>
-            <th scope="col">
-              <span>Titre</span>
-              <button onClick={console.log} className="mx-1">
-                ⬆
-              </button>
-              <button onClick={console.log} className="mx-1">
-                ⬇
-              </button>
-            </th>
+            <th scope="col">Titre</th>
             <th scope="col">
               <span>Auteur</span>
-              <button onClick={console.log} className="mx-1">
+              <button onClick={sortBookByAuthor} className="mx-1">
                 ⬆
               </button>
-              <button onClick={console.log} className="mx-1">
+              <button onClick={sortBookByAuthor} className="mx-1">
                 ⬇
               </button>
             </th>

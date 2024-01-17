@@ -6,6 +6,19 @@ export const BookContext = createContext();
 export const BookProvider = ({ children }) => {
   const [books, setBooks] = useState(library);
 
+  books.sort((a, b) => {
+    const authorA = a.author.toLowerCase();
+    const authorB = b.author.toLowerCase();
+    if (authorA > authorB) return 1;
+    if (authorA < authorB) return -1;
+    return 0;
+  });
+
+  const sortBookByAuthor = () => {
+    console.log("ssdq");
+    setBooks(books.toReversed());
+  };
+
   const deleteBook = (isbn) => {
     setBooks(books.filter((b) => b.isbn !== isbn));
   };
@@ -47,7 +60,16 @@ export const BookProvider = ({ children }) => {
 
   return (
     <BookContext.Provider
-      value={{ books, deleteBook, toggleEdit, endEdit, save, getBook }}
+      value={{
+        books,
+        deleteBook,
+        toggleEdit,
+        endEdit,
+        save,
+        getBook,
+        sortBookByAuthor,
+        setBooks,
+      }}
     >
       {children}
     </BookContext.Provider>
