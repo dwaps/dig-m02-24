@@ -23,7 +23,7 @@ export const BooksProvider = ({ children }) => {
   }
 
   return (
-    <BooksContext.Provider value={{ books, getBook, sortBooks }}>
+    <BooksContext.Provider value={{ books, getBook, sortBooks, setBooks }}>
       {children}
     </BooksContext.Provider>
   );

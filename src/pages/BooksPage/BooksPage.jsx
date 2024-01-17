@@ -19,6 +19,7 @@ function BooksPage() {
           <th>Titre</th>
           <th onClick={onSortByAuthor}>Auteur {isAsc ? "🔻" : "🔺"}</th>
           <th>Pays</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <Books />
