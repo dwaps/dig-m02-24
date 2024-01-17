@@ -3,6 +3,7 @@ import { smileys, books } from "../../models/index";
 
 export const SmileyImageContext = createContext();
 
+//Attention ! Ne pas utiliser, pas encore fonctionnel
 export const SmileyImageProvider = ({ children }) => {
   const [smileyImage, setSmileyImage] = useState("");
 

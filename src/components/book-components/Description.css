@@ -3,6 +3,10 @@
   padding: 0.5em;
 }
 
+.description-book h2 {
+  cursor: pointer;
+}
+
 .actions-book {
   display: flex;
   gap: 1em;

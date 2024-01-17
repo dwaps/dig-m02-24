@@ -14,11 +14,7 @@ function Book(props) {
         <Auteur key={props.book.id} auteur={props.book.auteur} />
       </td>
       <td className="book-description">
-        <Description
-          key={props.book.id}
-          name={props.book.name}
-          description={props.book.description}
-        />
+        <Description key={props.book.id} book={props.book} />
       </td>
       <td className="book-price">
         <Price key={props.book.id} price={props.book.price} />

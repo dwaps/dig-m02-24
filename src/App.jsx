@@ -1,36 +1,19 @@
 import "./App.css";
-import Profile from "./components/profile-components/Profile";
-import Smileys from "./components/smiley-components/Smileys";
-import { useState } from "react";
 
-import { profiles } from "./models";
-import { BookProvider, SmileyImageProvider } from "./utils/context";
-import BooksPage from "./components/book-components/BooksPage";
+import BookPageDetails from "./components/book-components/BookPageDetails";
+import MainContent from "./components/MainContent";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [currentMood, setCurrentMood] = useState("Aucun");
   return (
     <div className="App">
-      <SmileyImageProvider>
-        <h1>Profil</h1>
-        <div className="content-profiles">
-          <div className="profiles-div">
-            {profiles.map((profile) => (
-              <div>
-                <Profile
-                  key={profile.id}
-                  profile={profile}
-                  currentMood={currentMood}
-                />
-                <Smileys setCurrentMood={setCurrentMood} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </SmileyImageProvider>
-      <BookProvider>
-        <BooksPage />
-      </BookProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/book-details/:id" element={<BookPageDetails />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
