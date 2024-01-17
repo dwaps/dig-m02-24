@@ -5,6 +5,7 @@ function BooksTable({ allBooks, onDeleteBook, onUpdateBook, onSortBooks }) {
   const [sortOrder, setSortOrder] = useState("asc");
   const [sortedBooks, setSortedBooks] = useState(allBooks);
   const [isEditing, setIsEditing] = useState(false);
+  const [searchTitle, setSearchTitle] = useState("");
   const [editedBook, setEditedBook] = useState({
     id: "",
     title: "",
@@ -17,6 +18,13 @@ function BooksTable({ allBooks, onDeleteBook, onUpdateBook, onSortBooks }) {
   useEffect(() => {
     setSortedBooks([...allBooks]);
   }, [allBooks]);
+
+  useEffect(() => {
+    const filteredBooks = allBooks.filter((book) =>
+      book.title.toLowerCase().includes(searchTitle.toLowerCase())
+    );
+    setSortedBooks(filteredBooks);
+  }, [searchTitle, allBooks]);
 
   const handleSortByAuthor = () => {
     onSortBooks();
@@ -60,7 +68,16 @@ function BooksTable({ allBooks, onDeleteBook, onUpdateBook, onSortBooks }) {
 
   return (
     <>
-      <h2>Sous forme de tableau :</h2>
+      <div>
+        <label>
+          Rechercher par titre:
+          <input
+            type="text"
+            value={searchTitle}
+            onChange={(e) => setSearchTitle(e.target.value)}
+          />
+        </label>
+      </div>
       <table>
         <thead>
           <tr>
