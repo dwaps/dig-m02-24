@@ -38,6 +38,18 @@ export const BookProvider = ({ children }) => {
     );
   }
 
+  function filterBooksByName(text) {
+    if (text !== "") {
+      setTabOfBooks(
+        [...tabOfBooks].filter((b) =>
+          b.name.toLowerCase().includes(text.toLowerCase())
+        )
+      );
+    } else {
+      setTabOfBooks(books);
+    }
+  }
+
   function updateBook(oldBook) {
     const newBook = tabOfBooks.find((b) => b.id === oldBook.id);
     newBook.name = oldBook.name;
@@ -73,6 +85,7 @@ export const BookProvider = ({ children }) => {
         delFromTab: deleteFromTableau,
         updBook: updateBook,
         addBook: addBook,
+        filterByName: filterBooksByName,
       }}
     >
       {children}

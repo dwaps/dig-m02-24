@@ -7,3 +7,10 @@
 .btn-new-book {
   margin: 1em 0;
 }
+
+.header-book-tab-search {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}

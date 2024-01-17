@@ -5,17 +5,35 @@ import Book from "./Book";
 import { Link } from "react-router-dom";
 import { BookContext } from "../../utils/context";
 import { useContext } from "react";
+import { useState } from "react";
 
 function BooksPage() {
-  const { tabOfBooks, triTableauAsc, triTableauDesc } = useContext(BookContext);
+  const { tabOfBooks, triTableauAsc, triTableauDesc, filterByName } =
+    useContext(BookContext);
+  const [valueSearch, setValueSearch] = useState("");
+  const handleChangeSearch = (e) => {
+    setValueSearch(e.target.value);
+  };
   return (
     <div>
       <h1>Tableau de livres</h1>
       <div className="content-books">
         <div className="books-tab">
-          <Link to="/new-book">
-            <button className="btn-new-book">Nouveau livre</button>
-          </Link>
+          <div className="header-book-tab">
+            <Link to="/new-book">
+              <button className="btn-new-book">+ Nouveau livre</button>
+            </Link>
+            <div className="header-book-tab-search">
+              <input
+                type="text"
+                value={valueSearch}
+                onChange={handleChangeSearch}
+              />
+              <button onClick={() => filterByName(valueSearch)}>
+                Recherche par nom
+              </button>
+            </div>
+          </div>
           <table>
             <thead>
               <tr>
