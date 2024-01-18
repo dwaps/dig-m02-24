@@ -1,7 +1,14 @@
-import { ADD_TODO, CHANGE_TODO_STATUS, DELETE_TODO } from "./actions";
+import {
+  ADD_TODO,
+  CHANGE_TODO_STATUS,
+  DELETE_TODO,
+  UPDATE_TODOS,
+} from "./actions";
 
 export function todosReducer(currentState, action) {
   switch (action.type) {
+    case UPDATE_TODOS:
+      return { ...currentState, todolist: action.payload };
     case CHANGE_TODO_STATUS:
       return {
         ...currentState,
