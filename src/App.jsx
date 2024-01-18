@@ -1,23 +1,39 @@
-import { useFetchData } from "./utils/hooks";
+import { useForm } from "react-hook-form";
 import "./App.css";
 
 function App() {
-  const { data: todos, loading } = useFetchData("http://localhost:3000/books");
+  const {
+    handleSubmit,
+    register,
+    getValues,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      firstname: "Coco",
+    },
+  });
+
+  watch("lastname");
+  console.log(getValues());
+
+  const onValid = (data) => console.log(data);
+  const onError = (errors) => console.log(errors);
 
   return (
     <>
-      {loading ? (
-        <div className="loading"></div>
-      ) : (
-        <>
-          {todos.map((t) => (
-            <div key={t.id}>
-              <span>{t.txt}</span> - {t.done ? "FAIT" : "PAS FAIT"}
-              <button>Supprimer</button>
-            </div>
-          ))}
-        </>
-      )}
+      <form onSubmit={handleSubmit(onValid, onError)}>
+        <input
+          {...register("firstname", {
+            validate: (value) => value >= 3 || "Pas ok",
+          })}
+        />
+        {errors?.firstname && (
+          <p style={{ color: "red" }}>{errors.firstname.message}</p>
+        )}
+        <input {...register("lastname")} />
+        <button>Enregistrer</button>
+      </form>
     </>
   );
 }
