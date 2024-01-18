@@ -2,15 +2,20 @@ import { useEffect, useState } from "react";
 
 export function useFetchData(url = "") {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getTodos() {
+      setLoading(true);
       const res = await fetch(url);
       try {
         if (res.ok) {
           const dataReceived = await res.json();
           if (dataReceived) {
-            setData(dataReceived);
+            setTimeout(() => {
+              setData(dataReceived);
+              setLoading(false);
+            }, 5000);
           } else {
             console.log("pas de data");
           }
@@ -21,7 +26,7 @@ export function useFetchData(url = "") {
     }
 
     getTodos();
-  }, []);
+  }, [url]);
 
-  return data;
+  return { data, loading };
 }
