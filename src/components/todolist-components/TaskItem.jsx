@@ -2,6 +2,9 @@ import "./TaskItem.scss";
 import { useReducer, useState } from "react";
 
 function TaskItem(props) {
+  const [isDone, setIsDone] = useState(false);
+  const [state, dispatch] = useReducer(statusReducer, { status: isDone });
+
   function statusReducer(state, action) {
     switch (action.type) {
       case "CHANGE_STATUS":
@@ -10,9 +13,6 @@ function TaskItem(props) {
         throw Error("Action non reconnue : ", action.type);
     }
   }
-
-  const [isDone, setIsDone] = useState(false);
-  const [state, dispatch] = useReducer(statusReducer, { status: isDone });
 
   function onClick() {
     setIsDone(!isDone);

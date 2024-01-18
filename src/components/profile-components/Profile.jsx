@@ -19,11 +19,6 @@ function Profile(props) {
       <div className="profile-mood">
         <p>Son mood : {props.currentMood}</p>
       </div>
-      <div className="profile-todo">
-        <Link to="/todolist">
-          <p>Ma todo list</p>
-        </Link>
-      </div>
     </div>
   );
 }

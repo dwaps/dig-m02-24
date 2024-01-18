@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { smileys, books } from "../../models/index";
+import { useFetchData } from "../hooks";
 
 export const SmileyImageContext = createContext();
 
@@ -24,9 +25,11 @@ export const SmileyImageProvider = ({ children }) => {
 export const BookContext = createContext();
 
 export const BookProvider = ({ children }) => {
-  const [tabOfBooks, setTabOfBooks] = useState(
-    books.sort((a, b) => a.auteur.localeCompare(b.auteur))
-  );
+  const listOfBooks = useFetchData("http://localhost:3000/books");
+  useEffect(() => {
+    setTabOfBooks(listOfBooks.sort((a, b) => a.auteur.localeCompare(b.auteur)));
+  }, [listOfBooks]);
+  const [tabOfBooks, setTabOfBooks] = useState([]);
 
   function trierTableauAsc() {
     setTabOfBooks(
@@ -55,12 +58,12 @@ export const BookProvider = ({ children }) => {
   function filterBooksByName(text) {
     if (text !== "") {
       setTabOfBooks(
-        [...books].filter((b) =>
+        [...listOfBooks].filter((b) =>
           b.name.toLowerCase().includes(text.toLowerCase())
         )
       );
     } else {
-      setTabOfBooks(books);
+      setTabOfBooks(listOfBooks);
     }
   }
 

@@ -2,9 +2,8 @@ import "./BookUpdate.css";
 
 import { Link, useParams } from "react-router-dom";
 import { books } from "../../models/index";
-import { useState } from "react";
 import { BookContext } from "../../utils/context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 function BookUpdate() {
   const { updBook } = useContext(BookContext);

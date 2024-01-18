@@ -1,0 +1,14 @@
+GET http://localhost:3000/books
+
+###
+
+GET http://localhost:3000/books/001
+
+###
+
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+    
+}

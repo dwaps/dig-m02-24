@@ -3,16 +3,20 @@ import Photo from "./Photo";
 import Price from "./Price";
 import Auteur from "./Auteur";
 import { useParams } from "react-router-dom";
+import { useFetchData } from "../../utils/hooks";
+import { useEffect } from "react";
 
-import { books } from "../../models/index";
 import { Link } from "react-router-dom";
 
 function BookPageDetails() {
   const { id } = useParams();
-  const book = books.find((b) => b.id === id);
-  if (!book) {
-    return <div>Book not found</div>;
-  }
+  const book = useFetchData("http://localhost:3000/books/" + id);
+  useEffect(() => {
+    if (!book) {
+      return <div>Book not found</div>;
+    }
+  }, [book]);
+
   return (
     <div>
       <h1>Détails du livre </h1>

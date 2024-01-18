@@ -4,8 +4,8 @@ import Book from "./Book";
 
 import { Link } from "react-router-dom";
 import { BookContext } from "../../utils/context";
-import { useContext } from "react";
-import { useState } from "react";
+import { useContext, useState, useReducer } from "react";
+import { useFetchData } from "../../utils/hooks";
 
 function BooksPage() {
   const { tabOfBooks, triTableau, filterByName } = useContext(BookContext);
