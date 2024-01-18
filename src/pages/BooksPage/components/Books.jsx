@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -8,6 +8,9 @@ import "./Books.css";
 
 function Books() {
   const { books, setBooks } = useContext(BooksContext);
+  // const [title, setTitle] = useState("");
+  // const [author, setAuthor] = useState("");
+  // const [country, setCountry] = useState("");
 
   function editBook(id) {
     books.forEach((b) => {
@@ -17,7 +20,7 @@ function Books() {
         b.editable = false;
       }
     });
-    const book = books.find((b) => b.id === id);
+    books.find((b) => b.id === id);
     setBooks([...books]);
   }
 
@@ -27,9 +30,9 @@ function Books() {
 
   function handleSubmit(e, b) {
     e.preventDefault();
-    b.title = e.target.title;
-    b.author = e.target.author;
-    b.country = e.target.country;
+    b.title = e.target.title.value;
+    b.author = e.target.author.value;
+    b.country = e.target.country.value;
     b.editable = false;
     setBooks([...books]);
   }
@@ -54,15 +57,38 @@ function Books() {
             </>
           ) : (
             <>
-              {createPortal(<form id="formEditBook" />, document.body)}
+              {createPortal(
+                <form id="formEditBook" onSubmit={(e) => handleSubmit(e, b)}>
+                  <input type="submit" hidden />
+                </form>,
+                document.body
+              )}
               <td>
-                <input type="text" name="title" form="formEditBook" />
+                <input
+                  type="text"
+                  name="title"
+                  form="formEditBook"
+                  style={{ width: "100px" }}
+                  defaultValue={b.title}
+                />
               </td>
               <td>
-                <input type="text" name="author" form="formEditBook" />
+                <input
+                  type="text"
+                  name="author"
+                  form="formEditBook"
+                  style={{ width: "100px" }}
+                  defaultValue={b.author}
+                />
               </td>
               <td>
-                <input type="text" name="country" form="formEditBook" />
+                <input
+                  type="text"
+                  name="country"
+                  form="formEditBook"
+                  style={{ width: "100px" }}
+                  defaultValue={b.country}
+                />
               </td>
               <td className="text-center" style={{ cursor: "not-allowed" }}>
                 <img src={enterKey} alt="touche entrée" width={20} />
