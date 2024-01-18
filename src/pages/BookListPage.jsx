@@ -23,11 +23,11 @@ function BookListPage() {
 						Sort by author:
 						<span>
 							<button onClick={()=> {
-								filterBooks(true)
+								filterBooks(1)
 							}}>ASC</button>
 
 							<button onClick={()=> {
-								filterBooks(false)
+								filterBooks(-1)
 							}}>DESC</button>
 						</span>
 					</div>

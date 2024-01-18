@@ -13,25 +13,15 @@ export default function BookListProvider({ children }) {
 		setBookListStateCopy(val2)
 	}
 
-	function filterBooks(asc) {
-		let bookListOrdered, bookListCopyOrdered
-		if (asc) {
-			bookListOrdered = bookListState.toSorted(
-				(firstElt, secondElt) => firstElt.profile.name.localeCompare(secondElt.profile.name)
+	function filterBooks(ord) {
+		setListStateAndListStateCopy(
+			bookListState.toSorted(
+				(firstElt, secondElt) => firstElt.profile.name.localeCompare(secondElt.profile.name) * ord
+			),
+			bookListStateCopy.toSorted(
+				(firstElt, secondElt) => firstElt.profile.name.localeCompare(secondElt.profile.name) * ord
 			)
-			bookListCopyOrdered = bookListStateCopy.toSorted(
-				(firstElt, secondElt) => firstElt.profile.name.localeCompare(secondElt.profile.name)
-			)
-		} else {
-			bookListOrdered = bookListState.toSorted(
-				(firstElt, secondElt) => secondElt.profile.name.localeCompare(firstElt.profile.name)
-			)
-			bookListCopyOrdered = bookListStateCopy.toSorted(
-				(firstElt, secondElt) => secondElt.profile.name.localeCompare(firstElt.profile.name)
-			)
-		}
-
-		setListStateAndListStateCopy(bookListOrdered, bookListCopyOrdered)
+		)
 	}
 
 	function deleteBook(bookToDelete) {
@@ -55,7 +45,11 @@ export default function BookListProvider({ children }) {
 	}
 
 	function searchBookList(searchWord){
-		setBookList(bookListStateCopy.filter(book => book.title.toLowerCase().includes(searchWord.current.value)))
+		setBookList(
+			bookListStateCopy.filter(
+				book => book.title.toLowerCase().includes(searchWord.current.value)
+			)
+		)
 	}
 
 	return (
