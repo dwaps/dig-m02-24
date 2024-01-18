@@ -1,19 +1,21 @@
 import { createContext, useState } from "react";
 import { library } from "../data/library";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const BookContext = createContext();
 
 export const BookProvider = ({ children }) => {
   const [books, setBooks] = useState(library);
   const [search, setSearch] = useState("");
+  const redirect = useNavigate();
 
-  const handleAddBook = () => {
-    const isbn = document.getElementById("isbn").value.trim();
-    const titre = document.getElementById("titre").value.trim();
-    const auteur = document.getElementById("auteur").value.trim();
-    const editeur = document.getElementById("editeur").value.trim();
-    const description = document.getElementById("description").value.trim();
+  const handleAddBook = (e) => {
+    e.preventDefault();
+    const isbn = e.target.isbn.value.trim();
+    const titre = e.target.titre.value.trim();
+    const auteur = e.target.auteur.value.trim();
+    const editeur = e.target.editeur.value.trim();
+    const description = e.target.description.value.trim();
 
     if (isbn && titre && auteur && editeur && description) {
       setBooks([

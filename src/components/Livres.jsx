@@ -26,8 +26,10 @@ export const Livres = () => {
         onChange={(e) => handleSearch(e.target.value.trim())}
         className="m-1 form-control"
         type="search"
+        name="search"
         placeholder="Search"
         aria-label="Search"
+        defaultValue={search}
       ></input>
       <div className="table-responsive-sm">
         <table className="m-1 table table-hover table-light table-bordered">
@@ -80,6 +82,7 @@ export const Livres = () => {
                       <td>
                         <input
                           id={b.isbn + "title"}
+                          name={b.isbn + "title"}
                           className="w-100"
                           type="text"
                           autoFocus
@@ -89,6 +92,7 @@ export const Livres = () => {
                       <td>
                         <input
                           id={b.isbn + "author"}
+                          name={b.isbn + "author"}
                           className="w-100"
                           type="text"
                           autoFocus
@@ -98,6 +102,7 @@ export const Livres = () => {
                       <td>
                         <input
                           id={b.isbn + "publisher"}
+                          name={b.isbn + "publisher"}
                           className="w-100"
                           type="text"
                           autoFocus
@@ -122,7 +127,7 @@ export const Livres = () => {
                           endEdit(b.isbn);
                         }}
                         type="button"
-                        className="m-1 btn btn-outline-success"
+                        className="m-1 btn btn-sm btn-outline-success"
                       >
                         Sauver
                       </button>
@@ -130,7 +135,7 @@ export const Livres = () => {
                       <button
                         onClick={() => toggleEdit(b.isbn)}
                         type="button"
-                        className="m-1 btn btn-outline-warning"
+                        className="m-1 btn btn-sm btn-outline-warning"
                       >
                         Editer
                       </button>
@@ -142,7 +147,7 @@ export const Livres = () => {
                           endEdit(b.isbn);
                         }}
                         type="button"
-                        className="m-1 btn btn-outline-danger"
+                        className="m-1 btn btn-sm btn-outline-danger"
                       >
                         Annuler
                       </button>
@@ -150,7 +155,7 @@ export const Livres = () => {
                       <button
                         onClick={() => deleteBook(b.isbn)}
                         type="button"
-                        className="m-1 btn btn-outline-danger"
+                        className="m-1 btn btn-sm btn-outline-danger"
                       >
                         Supprimer
                       </button>

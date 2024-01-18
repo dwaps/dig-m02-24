@@ -16,8 +16,8 @@ import { Formulaire } from "./components/Formulaire";
 function App() {
   return (
     <div className="app container-fluid">
-      <BookProvider>
-        <Router>
+      <Router>
+        <BookProvider>
           <HeaderNav />
           <Routes>
             <Route path="/Accueil" element={<Accueil />} />
@@ -27,8 +27,8 @@ function App() {
             <Route path="/Formulaire" element={<Formulaire />} />
             <Route path="*" element={<Navigate to="/Accueil" />} />
           </Routes>
-        </Router>
-      </BookProvider>
+        </BookProvider>
+      </Router>
     </div>
   );
 }

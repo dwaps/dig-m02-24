@@ -12,13 +12,14 @@ export const Formulaire = () => {
       <Link className="m-3" to="/Livres">
         Retour à la liste
       </Link>
-      <form className="m-1 p-2 border border-dark">
+      <form onSubmit={handleAddBook} className="m-1 p-2 border border-dark">
         <div className="form-group m-1 p-1">
           <label htmlFor="isbn">ISBN</label>
           <input
             type="text"
             className="form-control"
             id="isbn"
+            name="isbn"
             aria-describedby="ISBNHelp"
             placeholder="Enter ISBN"
           />
@@ -29,6 +30,7 @@ export const Formulaire = () => {
             type="text"
             className="form-control"
             id="titre"
+            name="titre"
             aria-describedby="TitreHelp"
             placeholder="Enter Titre"
           />
@@ -39,6 +41,7 @@ export const Formulaire = () => {
             type="text"
             className="form-control"
             id="auteur"
+            name="auteur"
             aria-describedby="AuteurHelp"
             placeholder="Enter Auteur"
           />
@@ -49,6 +52,7 @@ export const Formulaire = () => {
             type="text"
             className="form-control"
             id="editeur"
+            name="editeur"
             aria-describedby="EditeurHelp"
             placeholder="Enter Editeur"
           />
@@ -59,14 +63,11 @@ export const Formulaire = () => {
             className="form-control"
             aria-label="With textarea"
             id="description"
+            name="description"
             placeholder="Enter Description"
           ></textarea>
         </div>
-        <button
-          onClick={handleAddBook}
-          type="button"
-          className="btn btn-success"
-        >
+        <button type="submit" className="btn btn-success">
           Ajouter
         </button>
       </form>
