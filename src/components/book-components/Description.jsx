@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Description(props) {
   return (
     <div className="description-book">
-      <Link to={"/book-details/" + props.book.id}>
+      <Link className="link" to={"/book-details/" + props.book.id}>
         <h2>{props.book.name}</h2>
       </Link>
       <p>{props.book.description}</p>

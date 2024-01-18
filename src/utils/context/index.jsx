@@ -24,7 +24,9 @@ export const SmileyImageProvider = ({ children }) => {
 export const BookContext = createContext();
 
 export const BookProvider = ({ children }) => {
-  const [tabOfBooks, setTabOfBooks] = useState(books);
+  const [tabOfBooks, setTabOfBooks] = useState(
+    books.sort((a, b) => a.auteur.localeCompare(b.auteur))
+  );
 
   function trierTableauAsc() {
     setTabOfBooks(
@@ -36,6 +38,18 @@ export const BookProvider = ({ children }) => {
     setTabOfBooks(
       [...tabOfBooks].sort((a, b) => b.auteur.localeCompare(a.auteur))
     );
+  }
+
+  function trierTableau(isAsc) {
+    if (isAsc) {
+      setTabOfBooks(
+        [...tabOfBooks].sort((a, b) => a.auteur.localeCompare(b.auteur))
+      );
+    } else {
+      setTabOfBooks(
+        [...tabOfBooks].sort((a, b) => b.auteur.localeCompare(a.auteur))
+      );
+    }
   }
 
   function filterBooksByName(text) {
@@ -82,6 +96,7 @@ export const BookProvider = ({ children }) => {
         tabOfBooks,
         triTableauAsc: trierTableauAsc,
         triTableauDesc: trierTableauDesc,
+        triTableau: trierTableau,
         delFromTab: deleteFromTableau,
         updBook: updateBook,
         addBook: addBook,

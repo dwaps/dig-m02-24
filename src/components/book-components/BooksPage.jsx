@@ -8,12 +8,24 @@ import { useContext } from "react";
 import { useState } from "react";
 
 function BooksPage() {
-  const { tabOfBooks, triTableauAsc, triTableauDesc, filterByName } =
-    useContext(BookContext);
+  const { tabOfBooks, triTableau, filterByName } = useContext(BookContext);
+  const [isSortingAsc, setIsSortingAsc] = useState(false);
+  const [charSorting, setCharSorting] = useState("↑");
   const [valueSearch, setValueSearch] = useState("");
   const handleChangeSearch = (e) => {
     setValueSearch(e.target.value);
   };
+  const handleSorting = () => {
+    console.log(isSortingAsc);
+    triTableau(isSortingAsc);
+    setIsSortingAsc(!isSortingAsc);
+    if (charSorting === "↓") {
+      setCharSorting("↑");
+    } else {
+      setCharSorting("↓");
+    }
+  };
+
   return (
     <div>
       <h1>Tableau de livres</h1>
@@ -42,8 +54,9 @@ function BooksPage() {
                   <div className="author-title">
                     <span>Auteur</span>
                     <div>
-                      <button onClick={() => triTableauAsc()}>↓</button>
-                      <button onClick={() => triTableauDesc()}>↑</button>
+                      <button onClick={() => handleSorting()}>
+                        {charSorting}
+                      </button>
                     </div>
                   </div>
                 </th>

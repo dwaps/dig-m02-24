@@ -11,3 +11,13 @@
   display: flex;
   gap: 1em;
 }
+
+.link {
+  color: rgb(7, 1, 82);
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: rgb(228, 89, 9);
+}
