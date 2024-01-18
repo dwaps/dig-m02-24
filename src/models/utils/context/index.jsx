@@ -1,12 +1,23 @@
 import { bookList } from '../../index';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createContext } from 'react';
+import { useFetchData } from '../hooks';
+
 
 export const BookListContext = createContext()
 
 export default function BookListProvider({ children }) {
-	const [bookListState, setBookList] = useState(bookList);
-	const [bookListStateCopy, setBookListStateCopy] = useState(bookListState)
+	
+	const { data } = useFetchData("http://localhost:3000/books")
+
+	const [bookListState, setBookList] = useState([]);
+	const [bookListStateCopy, setBookListStateCopy] = useState([])
+
+	
+	useEffect(() => {
+		setBookList(data)
+		setBookListStateCopy(data)
+	}, [data])
 
 	function setListStateAndListStateCopy(val1, val2) {
 		setBookList(val1)

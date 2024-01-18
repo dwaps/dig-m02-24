@@ -42,7 +42,9 @@ function BookListPage() {
 					</Link>
 				</div>
 				<div className="book-list">
-					{bookListState.map(book => <Book key={book.id} book={book} onDeleteBook={deleteBook}/>)}
+					{
+						bookListState &&
+						bookListState.map(book => <Book key={book.id} book={book} onDeleteBook={deleteBook}/>)}
 				</div>
 			</div>
 		</>
