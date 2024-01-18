@@ -72,3 +72,26 @@ export const smileys = [
     image: "⚡",
   },
 ];
+
+export const tasks = [
+  {
+    id: "001",
+    title: "Cours",
+    description: "Réviser React.js",
+  },
+  {
+    id: "002",
+    title: "Ménage",
+    description: "Nettoyer l'appartement",
+  },
+  {
+    id: "003",
+    title: "Sport",
+    description: "Faire 30 minutes d'exercice",
+  },
+  {
+    id: "004",
+    title: "Loisir",
+    description: "Jouer aux jeux vidéos",
+  },
+];

@@ -4,6 +4,7 @@ import BookPageDetails from "./components/book-components/BookPageDetails";
 import BookUpdate from "./components/book-components/BookUpdate";
 import BookCreate from "./components/book-components/BookCreate";
 import MainContent from "./components/MainContent";
+import ToDoList from "./components/todolist-components/ToDoList";
 import { BookProvider } from "./utils/context";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -31,6 +32,7 @@ function App() {
               </BookProvider>
             }
           />
+          <Route path="/todolist" element={<ToDoList />} />
         </Routes>
       </Router>
     </div>

@@ -2,6 +2,7 @@ import "./Profile.css";
 import Bio from "./Bio";
 import Name from "./Name";
 import Photo from "./Photo";
+import { Link } from "react-router-dom";
 
 function Profile(props) {
   return (
@@ -17,6 +18,11 @@ function Profile(props) {
       </div>
       <div className="profile-mood">
         <p>Son mood : {props.currentMood}</p>
+      </div>
+      <div className="profile-todo">
+        <Link to="/todolist">
+          <p>Ma todo list</p>
+        </Link>
       </div>
     </div>
   );

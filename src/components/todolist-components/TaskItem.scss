@@ -1,0 +1,19 @@
+.task-box {
+  display: flex;
+  flex-flow: column nowrap;
+
+  border-radius: 1em 3em;
+  width: 25em;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+
+  &.notdone {
+    background-color: rgb(255, 174, 174);
+  }
+
+  &.done {
+    background-color: rgb(193, 247, 198);
+  }
+}
