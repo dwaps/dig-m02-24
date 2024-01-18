@@ -1,14 +1,16 @@
 import { createContext, useContext, useState } from "react";
-import { books } from "../../../models";
+import { useFetchData } from "./hooksBooks";
 
 export const BooksContext = createContext();
 
 export const BooksProvider = ({ children }) => {
-  const [booksList, setBooksList] = useState(books);
+  const { data: booksList, fetchData } = useFetchData(
+    "http://localhost:3000/books"
+  );
   const [sortList, setSortedBooks] = useState(null);
 
-  const setBooks = (newList) => {
-    setBooksList(newList);
+  const setBooks = () => {
+    fetchData();
   };
 
   const sortBooks = () => {
@@ -18,27 +20,55 @@ export const BooksProvider = ({ children }) => {
         ? a.author.localeCompare(b.author)
         : b.author.localeCompare(a.author)
     );
-    setBooksList(newList);
+    fetchData();
     setSortedBooks(sortList === "asc" ? "desc" : "asc");
   };
 
-  const addBook = (newBook) => {
+  const addBook = async (newBook) => {
     newBook.id = booksList[booksList.length - 1].id + 1;
     newBook.url =
       "https://i.pinimg.com/236x/37/a9/98/37a99839a447357ee6d3d4b9c991d864.jpg";
-    setBooksList((booksList) => [...booksList, newBook]);
+    const response = await fetch("http://localhost:3000/books", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newBook),
+    });
+
+    if (response.ok) {
+      fetchData();
+      console.log("adding OK");
+    }
   };
 
-  const deleteBook = (bookId) => {
-    const newList = booksList.filter((book) => book.id !== bookId);
-    setBooksList(newList);
+  const deleteBook = async (bookId) => {
+    const response = await fetch(`http://localhost:3000/books/${bookId}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      fetchData();
+      console.log("delete OK");
+    }
   };
 
-  const updateBook = (updatedBook) => {
-    const newList = booksList.map((book) =>
-      book.id === updatedBook.id ? updatedBook : book
+  const updateBook = async (updatedBook) => {
+    const response = await fetch(
+      `http://localhost:3000/books/${updatedBook.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedBook),
+      }
     );
-    setBooksList(newList);
+
+    if (response.ok) {
+      fetchData();
+      console.log("UPDATE OK");
+    }
   };
 
   return (

@@ -1,0 +1,15 @@
+GET http://127.0.0.1:3000
+
+###
+GET http://127.0.0.1:3000/books
+
+###
+
+POST http://127.0.0.1:3000/
+books
+Content-Type: application/json
+
+{
+    "txt": "Faire les course",
+    "done": false
+}

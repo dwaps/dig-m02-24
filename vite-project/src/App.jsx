@@ -12,6 +12,7 @@ import {
   Link,
   Navigate,
 } from "react-router-dom";
+import TodoList from "./components/TodoList";
 
 const HeaderNav = () => (
   <ul className="HeaderNav">
@@ -23,6 +24,9 @@ const HeaderNav = () => (
     </li>
     <li>
       <Link to="/profile">Profil</Link>
+    </li>
+    <li>
+      <Link to="/todoList">TodoList</Link>
     </li>
   </ul>
 );
@@ -65,6 +69,7 @@ function App() {
             path="/profile"
             element={<Profile humor={humor}></Profile>}
           ></Route>
+          <Route path="/todoList" element={<TodoList></TodoList>}></Route>
           <Route path="*" element={<Navigate to="/accueil"></Navigate>}></Route>
         </Routes>
       </Router>
