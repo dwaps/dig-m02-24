@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { BookContext } from "../utils/context/books";
-import "./Livres.css";
 import { Link } from "react-router-dom";
 
 export const Livres = () => {
@@ -12,6 +11,8 @@ export const Livres = () => {
     save,
     sortBookByAuthorAsc,
     sortBookByAuthorDesc,
+    search,
+    handleSearch,
   } = useContext(BookContext);
 
   return (
@@ -26,6 +27,7 @@ export const Livres = () => {
           Ajouter
         </button>
         <input
+          onChange={(e) => handleSearch(e.target.value)}
           className="m-1 form-control"
           type="search"
           placeholder="Search"
@@ -74,91 +76,93 @@ export const Livres = () => {
             </tr>
           </thead>
           <tbody>
-            {books.map((b) => (
-              <tr key={b.isbn}>
-                {b.editable && b.editable == true ? (
-                  <>
-                    <td>
-                      <input
-                        id={b.isbn + "title"}
-                        className="w-100"
-                        type="text"
-                        autoFocus
-                        defaultValue={b.title}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        id={b.isbn + "author"}
-                        className="w-100"
-                        type="text"
-                        autoFocus
-                        defaultValue={b.author}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        id={b.isbn + "publisher"}
-                        className="w-100"
-                        type="text"
-                        autoFocus
-                        defaultValue={b.publisher}
-                      />
-                    </td>
-                  </>
-                ) : (
-                  <>
-                    <td>
-                      <Link to={`/Livres/${b.isbn}`}>{b.title}</Link>
-                    </td>
-                    <td>{b.author}</td>
-                    <td>{b.publisher}</td>
-                  </>
-                )}
-                <td>
+            {books
+              .filter((b) => b.title.includes(search))
+              .map((b) => (
+                <tr key={b.isbn}>
                   {b.editable && b.editable == true ? (
-                    <button
-                      onClick={() => {
-                        save(b.isbn);
-                        endEdit(b.isbn);
-                      }}
-                      type="button"
-                      className="m-1 btn btn-outline-success"
-                    >
-                      Sauver
-                    </button>
+                    <>
+                      <td>
+                        <input
+                          id={b.isbn + "title"}
+                          className="w-100"
+                          type="text"
+                          autoFocus
+                          defaultValue={b.title}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          id={b.isbn + "author"}
+                          className="w-100"
+                          type="text"
+                          autoFocus
+                          defaultValue={b.author}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          id={b.isbn + "publisher"}
+                          className="w-100"
+                          type="text"
+                          autoFocus
+                          defaultValue={b.publisher}
+                        />
+                      </td>
+                    </>
                   ) : (
-                    <button
-                      onClick={() => toggleEdit(b.isbn)}
-                      type="button"
-                      className="m-1 btn btn-outline-warning"
-                    >
-                      Editer
-                    </button>
+                    <>
+                      <td>
+                        <Link to={`/Livres/${b.isbn}`}>{b.title}</Link>
+                      </td>
+                      <td>{b.author}</td>
+                      <td>{b.publisher}</td>
+                    </>
                   )}
+                  <td>
+                    {b.editable && b.editable == true ? (
+                      <button
+                        onClick={() => {
+                          save(b.isbn);
+                          endEdit(b.isbn);
+                        }}
+                        type="button"
+                        className="m-1 btn btn-outline-success"
+                      >
+                        Sauver
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => toggleEdit(b.isbn)}
+                        type="button"
+                        className="m-1 btn btn-outline-warning"
+                      >
+                        Editer
+                      </button>
+                    )}
 
-                  {b.editable && b.editable == true ? (
-                    <button
-                      onClick={() => {
-                        endEdit(b.isbn);
-                      }}
-                      type="button"
-                      className="m-1 btn btn-outline-danger"
-                    >
-                      Annuler
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => deleteBook(b.isbn)}
-                      type="button"
-                      className="m-1 btn btn-outline-danger"
-                    >
-                      Supprimer
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
+                    {b.editable && b.editable == true ? (
+                      <button
+                        onClick={() => {
+                          endEdit(b.isbn);
+                        }}
+                        type="button"
+                        className="m-1 btn btn-outline-danger"
+                      >
+                        Annuler
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => deleteBook(b.isbn)}
+                        type="button"
+                        className="m-1 btn btn-outline-danger"
+                      >
+                        Supprimer
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

@@ -5,6 +5,11 @@ export const BookContext = createContext();
 
 export const BookProvider = ({ children }) => {
   const [books, setBooks] = useState(library);
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (word) => {
+    setSearch(word);
+  };
 
   const sortBookByAuthorAsc = () => {
     const booksSortedAsc = [...books];
@@ -80,6 +85,8 @@ export const BookProvider = ({ children }) => {
         getBook,
         sortBookByAuthorAsc,
         sortBookByAuthorDesc,
+        search,
+        handleSearch,
       }}
     >
       {children}
