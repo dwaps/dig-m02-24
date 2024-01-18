@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 import { BookListContext } from "./../../utils/context/index";
 import { Link } from 'react-router-dom';
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { useFetchData } from "../../utils/hooks";
 
 const BookPage = () => {
   const [ books, filterBooks,,,, searchBook ] = useContext(BookListContext);
@@ -19,7 +20,7 @@ const BookPage = () => {
         <Link to={`/create`}>Ajouter un livre</Link>
       </div>
       <div className={styles.BookPage}>
-        { 
+        { books &&
           books.map((book) => {
             return <Book key={book.id} book={book}></Book>;
           })

@@ -1,12 +1,19 @@
-import { books } from "./../../models/index";
 import { useState } from 'react';
 import { createContext } from 'react';
+import { useFetchData } from '../hooks';
+import { useEffect } from 'react';
 
 export const BookListContext = createContext()
 
 export default function BookListProvider({ children }) {
-    const [myBooks, setMyBooks] = useState(books);
-    const [memoBooks, setMemoBooks] = useState(books);
+    const { data } = useFetchData("http://localhost:3000/books");
+    const [myBooks, setMyBooks] = useState([]);
+    const [memoBooks, setMemoBooks] = useState([]);
+
+    useEffect(() => {
+      setMyBooks(data)
+      setMemoBooks(data)
+    }, [data]);
 
     function filterBooks(isAsc) {
       let myBooksOrdered
