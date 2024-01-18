@@ -10,12 +10,12 @@ export const DetailLivre = () => {
   return (
     <>
       <div className="card bg-light m-3">
-        <div className="card-header">{book.title}</div>
+        <div className="card-header">{book && book.title}</div>
         <div className="card-body">
           <h5 className="card-title">
-            {book.author} | {book.publisher}
+            {book && book.author} | {book && book.publisher}
           </h5>
-          <p className="card-text">{book.description}</p>
+          <p className="card-text">{book && book.description}</p>
         </div>
       </div>
       <Link className="m-3" to="/Livres">

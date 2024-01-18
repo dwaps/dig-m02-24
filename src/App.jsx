@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import { BookProvider } from "./utils/context/books";
 import { DetailLivre } from "./components/DetailLivre";
+import { Formulaire } from "./components/Formulaire";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/Livres" element={<Livres />} />
             <Route path="/Livres/:isbn" element={<DetailLivre />} />
             <Route path="/Contact" element={<Contact />} />
+            <Route path="/Formulaire" element={<Formulaire />} />
             <Route path="*" element={<Navigate to="/Accueil" />} />
           </Routes>
         </Router>

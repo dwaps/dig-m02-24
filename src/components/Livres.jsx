@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useContext } from "react";
 import { BookContext } from "../utils/context/books";
 import { Link } from "react-router-dom";
@@ -18,22 +19,16 @@ export const Livres = () => {
   return (
     <div>
       <h1 className="text-center m-1">Livres</h1>
-      <div className="d-flex">
-        <button
-          onClick={console.log}
-          type="button"
-          className="m-1 btn btn-outline-dark"
-        >
-          Ajouter
-        </button>
-        <input
-          onChange={(e) => handleSearch(e.target.value)}
-          className="m-1 form-control"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        ></input>
-      </div>
+      <p className="m-2">
+        <Link to={"/Formulaire"}>Formulaire d'ajout de livre</Link>
+      </p>
+      <input
+        onChange={(e) => handleSearch(e.target.value.trim())}
+        className="m-1 form-control"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      ></input>
       <div className="table-responsive-sm">
         <table className="m-1 table table-hover table-light table-bordered">
           <thead>
