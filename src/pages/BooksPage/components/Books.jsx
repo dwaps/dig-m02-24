@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -8,9 +8,6 @@ import "./Books.css";
 
 function Books() {
   const { books, setBooks } = useContext(BooksContext);
-  // const [title, setTitle] = useState("");
-  // const [author, setAuthor] = useState("");
-  // const [country, setCountry] = useState("");
 
   function editBook(id) {
     books.forEach((b) => {
@@ -69,7 +66,6 @@ function Books() {
                   name="title"
                   form="formEditBook"
                   style={{ width: "100px" }}
-                  defaultValue={b.title}
                 />
               </td>
               <td>
