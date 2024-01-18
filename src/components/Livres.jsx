@@ -4,13 +4,15 @@ import "./Livres.css";
 import { Link } from "react-router-dom";
 
 export const Livres = () => {
-  const { books, deleteBook, toggleEdit, endEdit, save, setBooks } =
-    useContext(BookContext);
-
-  const sortBookByAuthor = () => {
-    console.log("é");
-    setBooks(books.slice().reverse());
-  };
+  const {
+    books,
+    deleteBook,
+    toggleEdit,
+    endEdit,
+    save,
+    sortBookByAuthorAsc,
+    sortBookByAuthorDesc,
+  } = useContext(BookContext);
 
   return (
     <div>
@@ -30,111 +32,136 @@ export const Livres = () => {
           aria-label="Search"
         ></input>
       </div>
-      <table className="m-1 table table-hover table-light table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">
-              <span>Auteur</span>
-              <button onClick={sortBookByAuthor} className="mx-1">
-                ⬆
-              </button>
-              <button onClick={sortBookByAuthor} className="mx-1">
-                ⬇
-              </button>
-            </th>
-            <th scope="col">Editeur</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {books.map((b) => (
-            <tr key={b.isbn}>
-              {b.editable && b.editable == true ? (
-                <>
-                  <td>
-                    <input
-                      id={b.isbn + "title"}
-                      className="w-100"
-                      type="text"
-                      autoFocus
-                      defaultValue={b.title}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      id={b.isbn + "author"}
-                      className="w-100"
-                      type="text"
-                      autoFocus
-                      defaultValue={b.author}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      id={b.isbn + "publisher"}
-                      className="w-100"
-                      type="text"
-                      autoFocus
-                      defaultValue={b.publisher}
-                    />
-                  </td>
-                </>
-              ) : (
-                <>
-                  <td>
-                    <Link to={`/Livres/${b.isbn}`}>{b.title}</Link>
-                  </td>
-                  <td>{b.author}</td>
-                  <td>{b.publisher}</td>
-                </>
-              )}
-              <td>
-                {b.editable && b.editable == true ? (
-                  <button
-                    onClick={() => {
-                      save(b.isbn);
-                      endEdit(b.isbn);
-                    }}
-                    type="button"
-                    className="m-1 btn btn-outline-success"
-                  >
-                    Sauver
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => toggleEdit(b.isbn)}
-                    type="button"
-                    className="m-1 btn btn-outline-warning"
-                  >
-                    Editer
-                  </button>
-                )}
-
-                {b.editable && b.editable == true ? (
-                  <button
-                    onClick={() => {
-                      endEdit(b.isbn);
-                    }}
-                    type="button"
-                    className="m-1 btn btn-outline-danger"
-                  >
-                    Annuler
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => deleteBook(b.isbn)}
-                    type="button"
-                    className="m-1 btn btn-outline-danger"
-                  >
-                    Supprimer
-                  </button>
-                )}
-              </td>
+      <div className="table-responsive-sm">
+        <table className="m-1 table table-hover table-light table-bordered">
+          <thead>
+            <tr>
+              <th scope="col" className="align-middle">
+                Titre
+              </th>
+              <th
+                scope="col"
+                className="d-flex justify-content-between align-items-center"
+              >
+                <span className="align-middle">Auteur</span>
+                <ul className="d-flex list-inline m-0">
+                  <li>
+                    <button
+                      onClick={sortBookByAuthorAsc}
+                      type="button"
+                      className="mx-1 btn btn-sm btn-outline-dark"
+                    >
+                      ⬆
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={sortBookByAuthorDesc}
+                      type="button"
+                      className="mx-1 btn btn-sm btn-outline-dark"
+                    >
+                      ⬇
+                    </button>
+                  </li>
+                </ul>
+              </th>
+              <th scope="col" className="align-middle">
+                Editeur
+              </th>
+              <th scope="col" className="align-middle">
+                Actions
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {books.map((b) => (
+              <tr key={b.isbn}>
+                {b.editable && b.editable == true ? (
+                  <>
+                    <td>
+                      <input
+                        id={b.isbn + "title"}
+                        className="w-100"
+                        type="text"
+                        autoFocus
+                        defaultValue={b.title}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id={b.isbn + "author"}
+                        className="w-100"
+                        type="text"
+                        autoFocus
+                        defaultValue={b.author}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id={b.isbn + "publisher"}
+                        className="w-100"
+                        type="text"
+                        autoFocus
+                        defaultValue={b.publisher}
+                      />
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>
+                      <Link to={`/Livres/${b.isbn}`}>{b.title}</Link>
+                    </td>
+                    <td>{b.author}</td>
+                    <td>{b.publisher}</td>
+                  </>
+                )}
+                <td>
+                  {b.editable && b.editable == true ? (
+                    <button
+                      onClick={() => {
+                        save(b.isbn);
+                        endEdit(b.isbn);
+                      }}
+                      type="button"
+                      className="m-1 btn btn-outline-success"
+                    >
+                      Sauver
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => toggleEdit(b.isbn)}
+                      type="button"
+                      className="m-1 btn btn-outline-warning"
+                    >
+                      Editer
+                    </button>
+                  )}
+
+                  {b.editable && b.editable == true ? (
+                    <button
+                      onClick={() => {
+                        endEdit(b.isbn);
+                      }}
+                      type="button"
+                      className="m-1 btn btn-outline-danger"
+                    >
+                      Annuler
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => deleteBook(b.isbn)}
+                      type="button"
+                      className="m-1 btn btn-outline-danger"
+                    >
+                      Supprimer
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
