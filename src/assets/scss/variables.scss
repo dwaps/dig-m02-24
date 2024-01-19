@@ -1,0 +1,98 @@
+// Colors
+$primary:	#e5872b;
+$secondary:	#0c9637;
+$tertiary:	#f5b31a;
+$success:	#15cc27;
+$danger:	#d23318;
+$warning:	orange;
+$light:		#f5f8fa;
+$dark:		#23233c;
+$white:		#fff;
+$black:		#000;
+$shadow:	#0786B1;
+$fileRequestItemColor: #dbdef0;
+$dividerColor: #adb5bd;
+
+$gray:      #5d636a;
+$gray-100:  #f8f9fa;
+$gray-200:  #e9ecef;
+$gray-300:  #dee2e6;
+$gray-400:  #cfd0d6;
+$gray-500:  #a6b1c0;
+$gray-600:  #6c757d;
+$gray-700:  #485465;
+$gray-800:  #3a4759;
+$gray-900:  $dark;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "tertiary":   $tertiary,
+  "success":    $success,
+  "danger":     $danger,
+  "warning":    $warning,
+  "light":      $light,
+  "dark":       $dark,
+  "white":      $white,
+);
+
+$body-bg: $white;
+$body-color: $dark;
+
+$grid-gutter-width: 30px;
+
+$enable-responsive-font-sizes: true;
+$enable-negative-margins: true;
+
+// Links
+$link-hover-decoration: none;
+
+// Components
+$border-radius: .6125rem;
+$border-radius-sm: .6125rem;
+$border-radius-lg: .6125rem;
+$border-radius-pill: 50rem;
+
+$box-shadow: 0 10px 20px rgba($shadow, .07);
+$box-shadow-sm: 0 .125rem .25rem rgba($black, .075);
+$box-shadow-lg: 0 .25rem .25rem rgba($secondary, .15);
+
+// Typography
+$font-size-base: .938rem;
+
+$font-family-sans-serif: "Roboto", sans-serif;
+$headings-font-family: "Roboto", sans-serif;
+$headings-font-weight: 700;
+$lead-font-weight: 400;
+$display1-weight: 600;
+$display2-weight: 600;
+$display3-weight: 600;
+$display4-weight: 600;
+
+$text-muted: $gray-500;
+
+// Buttons + Forms
+$input-btn-padding-y: .5rem;
+$input-btn-padding-x: .75rem;
+$input-box-shadow: 0 0 10px rgba($primary, .1);
+$input-border-color: $white;
+
+$input-disabled-bg: $tertiary;
+$input-disabled-border-color: $white;
+
+$form-label-color: $gray-800;
+
+$form-floating-height: 3.25rem;
+$form-floating-line-height:       1.25 !default;
+
+$form-floating-padding-y:         1rem !default;
+$form-floating-input-padding-t:   1.625rem !default;
+$form-floating-input-padding-b:   .625rem !default;
+$form-floating-label-opacity: 1;
+
+$nav-tabs-border-color: transparent;
+$nav-tabs-border-width: 3px;
+$nav-tabs-link-hover-border-color: $dark;
+$nav-tabs-link-active-color: $gray-700 ;
+$nav-tabs-link-active-bg: transparent;
+$nav-tabs-link-active-border-color: transparent transparent $dark transparent;

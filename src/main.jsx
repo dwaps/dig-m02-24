@@ -1,21 +1,26 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./assets/scss/app.scss";
 
-
-// router 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Profil from './components/profil/profil.jsx';
-import BookDetailsPage from './components/book/page/BookDetailsPage.jsx';
+// router
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Profil from "./components/profil/profil.jsx";
+import BookDetailsPage from "./components/book/page/BookDetailsPage.jsx";
+import HomePage from "./pages/Home.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <HomePage />,
+  },
+  {
+    path: "/panier",
+    element: <HomePage />,
   },
   {
     path: "/book-details",
-    element: <BookDetailsPage/>,
+    element: <BookDetailsPage />,
   },
   {
     path: "/profil",
@@ -23,10 +28,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router}>
       <App />
     </RouterProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
