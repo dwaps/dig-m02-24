@@ -27,6 +27,20 @@ const Menu = () => {
                 {panier.length}
               </Badge>
             </Nav.Link>
+
+            <Nav.Link href="/panier">
+              Listes des plats
+              <Badge className=" p-2" bg="secondary">
+                admin
+              </Badge>
+            </Nav.Link>
+
+            <Nav.Link href="/panier">
+              Ajouter un plat
+              <Badge className=" p-2" bg="secondary">
+                admin
+              </Badge>
+            </Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

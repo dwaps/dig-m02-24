@@ -11,7 +11,6 @@ import HomePage from "./pages/Home.jsx";
 import PanierPage from "./pages/Panier.jsx";
 import CommandPage from "./pages/command.jsx";
 import BackofficePage from "./pages/backoffice.jsx";
-import { AuthProvider } from "./components/hooks/AuthContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,12 +27,8 @@ const router = createBrowserRouter([
     element: <CommandPage />,
   },
   {
-    path: "/backoffice",
-    element: (
-      <AuthProvider>
-          <BackofficePage />
-      </AuthProvider>
-    ),
+    path: "/backoffice/",
+    element: <BackofficePage />,
   },
   {
     path: "/book-details",
