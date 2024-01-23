@@ -6,6 +6,11 @@ const Footer = () => {
           <h5>Le Rapido </h5>
           <ul className="nav flex-column">
             <li className="nav-item mb-2">
+              <a href="/auth" className="nav-link p-0 ">
+                Mon Compte admin
+              </a>
+            </li>
+            <li className="nav-item mb-2">
               <a href="#presentation" className="nav-link p-0 ">
                 Présentation
               </a>

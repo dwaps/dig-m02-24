@@ -11,6 +11,7 @@ import HomePage from "./pages/Home.jsx";
 import PanierPage from "./pages/Panier.jsx";
 import CommandPage from "./pages/command.jsx";
 import BackofficePage from "./pages/backoffice.jsx";
+import AuthPage from "./pages/auth/auth.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,6 @@ const router = createBrowserRouter([
     path: "/panier",
     element: <PanierPage />,
   },
-
   {
     path: "/command",
     element: <CommandPage />,
@@ -29,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/backoffice/",
     element: <BackofficePage />,
+  },
+  {
+    path: "/auth",
+    element: <AuthPage />,
   },
   {
     path: "/book-details",

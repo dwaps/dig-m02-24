@@ -5,8 +5,14 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Badge from "react-bootstrap/Badge";
 import { usePanier } from "../hooks/usePanier";
+import { useAuthLocal } from "../hooks/authlocal";
 const Menu = () => {
   const { panier } = usePanier();
+
+  const { currentUser } = useAuthLocal();
+
+  console.log(currentUser);
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -28,19 +34,23 @@ const Menu = () => {
               </Badge>
             </Nav.Link>
 
-            <Nav.Link href="/panier">
-              Listes des plats
-              <Badge className=" p-2" bg="secondary">
-                admin
-              </Badge>
-            </Nav.Link>
+            {currentUser.length > 0 ? (
+              <>
+                <Nav.Link href="/backoffice">
+                  Listes des plats
+                  <Badge className=" p-2" bg="secondary">
+                    admin
+                  </Badge>
+                </Nav.Link>
 
-            <Nav.Link href="/panier">
-              Ajouter un plat
-              <Badge className=" p-2" bg="secondary">
-                admin
-              </Badge>
-            </Nav.Link>
+                <Nav.Link href="/backoffice">
+                  Ajouter un plat
+                  <Badge className=" p-2" bg="secondary">
+                    admin
+                  </Badge>
+                </Nav.Link>
+              </>
+            ) : null}
           </Nav>
           <Form className="d-flex">
             <Form.Control
