@@ -18,10 +18,10 @@ const Menu = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#presentation">Présentation</Nav.Link>
-            <Nav.Link href="#carte">Carte</Nav.Link>
-            <Nav.Link href="#localisation">Localisation</Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/#presentation">Présentation</Nav.Link>
+            <Nav.Link href="/#carte">Carte</Nav.Link>
+            <Nav.Link href="/#localisation">Localisation</Nav.Link>
+            <Nav.Link href="/panier">
               Mon Panier
               <Badge className=" p-2" bg="primary">
                 {panier.length}

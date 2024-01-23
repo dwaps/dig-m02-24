@@ -8,6 +8,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profil from "./components/profil/profil.jsx";
 import BookDetailsPage from "./components/book/page/BookDetailsPage.jsx";
 import HomePage from "./pages/Home.jsx";
+import PanierPage from "./pages/Panier.jsx";
+import CommandPage from "./pages/command.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +18,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/panier",
-    element: <HomePage />,
+    element: <PanierPage />,
+  },
+
+  {
+    path: "/command",
+    element: <CommandPage />,
+  },
+  {
+    path: "/backoffice/",
+    element: <div>dashboard</div>,
   },
   {
     path: "/book-details",

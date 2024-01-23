@@ -1,7 +1,10 @@
 import { usePanier } from "../hooks/usePanier";
+import myPanier from "./panierStateLocal/panierLocalStorage";
 
 const Card = ({ plat }) => {
   const { panier, setPanier } = usePanier();
+  const {setPanierLocalStorage ,panierLocalStorage}  = myPanier()
+
   return (
     <div className="card shadow-sm">
       <img src={plat.image} alt="plat" width="100%" height="225" />
@@ -17,6 +20,7 @@ const Card = ({ plat }) => {
               className="btn btn-sm btn-outline-secondary"
               onClick={() => {
                 setPanier([...panier, plat]);
+                setPanierLocalStorage([...panierLocalStorage, plat]);
                 console.log(panier);
               }}
             >

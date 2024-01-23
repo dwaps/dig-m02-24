@@ -1,8 +1,11 @@
 import { createContext, useContext, useState } from "react";
+import myPanier from "../rapidoComponents/panierStateLocal/panierLocalStorage";
+
+const { panierLocalStorage, setPanierLocalStorage } = myPanier();
 
 export const PanierContext = createContext({
-  panier: [],
-  setPanier: () => {},
+  panier: panierLocalStorage,
+  setPanier: setPanierLocalStorage,
 });
 
 export function usePanier() {
@@ -14,7 +17,7 @@ export function usePanier() {
 }
 
 export function PanierContextProvider({ children }) {
-  const [panier, setPanier] = useState([]);
+  const [panier, setPanier] = useState(panierLocalStorage);
   return (
     <PanierContext.Provider
       value={{

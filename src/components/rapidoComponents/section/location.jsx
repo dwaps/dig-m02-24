@@ -13,7 +13,7 @@ const LocationSection = () => {
 
   return (
     <section id="localisation">
-      <div className="container" style={{ textAlign: "center" }}>
+      <div className="container" style={{ tààextAlign: "center" }}>
         <h1>Localisation</h1>
         <p>Nos adresses : </p>
 
