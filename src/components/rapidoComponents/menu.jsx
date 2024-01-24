@@ -34,7 +34,7 @@ const Menu = () => {
               </Badge>
             </Nav.Link>
 
-            {currentUser.length > 0 ? (
+            {currentUser?.length > 0 ? (
               <>
                 <Nav.Link href="/backoffice">
                   Listes des plats

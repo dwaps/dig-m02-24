@@ -17,7 +17,7 @@ const plats = [
     price: 15,
     rating: 4.5,
     image:
-      "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://assets.afcdn.com/recipe/20130823/31304_w1024h576c1cx2592cy1728.webp",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const plats = [
     price: 16,
     rating: 4.5,
     image:
-      "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://fondationolo.ca/wp-content/uploads/2016/07/fondation-olo-recette-salade-carottes.jpg",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const plats = [
     price: 18,
     rating: 4.5,
     image:
-      "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.radio-canada.ca/v1/ici-tele/16x9/5-chefs-dans-ma-cuisine-salade-de-fenouil-19-janvier-2021.jpg",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const plats = [
     price: 20,
     rating: 4.5,
     image:
-      "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://lerepaireduchef.fr/wp-content/uploads/2023/04/pizza-italienne-margeuerite.jpg",
   },
 ];
 
